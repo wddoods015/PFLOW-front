@@ -1,6 +1,7 @@
 // src/resume/Resume3.js
 import React, { useState } from "react";
 import "./Resume.css";
+import SideBar from "../components/SideBar";
 
 
 const Resume3 = () => {
@@ -43,8 +44,9 @@ const Resume3 = () => {
   return (
     <div className="resume">
      <form className="Form" onSubmit={handleSubmit}>
-     <h1 className="h1">Tell us about your education and skills</h1>
+     <h1 className="h1">사용자님의 경력 정보를 입력해주세요!</h1>
      <h3 className="h3">학력사항</h3>
+     <SideBar />
      <table className="tableForm">
       <tr>
         <th>학교명</th>

@@ -2,6 +2,8 @@
 import React from "react";
 import "./Resume.css";
 import { useTheme } from '../context/ThemeContext'; // useTheme 훅을 사용
+import SideBar from "../components/SideBar";
+
 
 
 const Resume1 = () => {
@@ -12,9 +14,11 @@ const Resume1 = () => {
     };
 
     return (
-      <div>
-        <h1>이력서 테마를 선택하세요!</h1>
-        <div className="sample-resume">
+      <div className="container">
+        <h1>환영합니다 이력서 작성을 도와드릴게요!</h1>
+        <span>이력서 테마를 선택하세요!</span>
+        <SideBar />
+        <div className="resume">
             <div className="color-btn">
                 <button 
                     className="blue-sample" 

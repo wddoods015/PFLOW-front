@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Resume.css";
-
+import SideBar from "../components/SideBar";
 
 const Resume2 = () => {
   //입력값을 저장할 상태 
@@ -56,8 +56,9 @@ const Resume2 = () => {
   return (
     <div className="resume" onSubmit={handleSubmit}>
       <form className="Form" >
-        <h1 className="h1">What's the best way for employers to contact you?</h1>
+        <h1 className="h1">사용자님의 기본 정보를 입력해주세요!</h1>
         <h3 className="h3">기본 정보</h3>
+        <SideBar />
         <table className="tableForm">
           <tbody>
             <tr>

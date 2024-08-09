@@ -11,7 +11,7 @@ const SideBar = () => {
     <nav className="SideBar">
       <ul className="Step-Section">
         <li className="Step1">
-          <span className="Text1" style={{color: location.pathname === '/resume/Resume1' ? 'red' : 'white'}}>탬플릿 정보</span>
+          <span className="Text1" style={{color: location.pathname === '/resume/Resume1' ? 'red' : 'white'}}>테마 선택</span>
         </li>
         <li className="Step">
           <span className="Text2" style={{color: location.pathname === '/resume/Resume2' ? 'red' : 'white'}}>기본정보</span>

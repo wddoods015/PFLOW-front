@@ -1,88 +1,91 @@
-/* 사이드바 css */
-
+/* 사이드바 CSS */
 .SideBar {
-  margin: 20px;
+    top: -180px;
+    left: -300px;
     position: relative;
-    top: 10px;
     display: flex;
     flex-direction: column; /* 자식 요소를 수직으로 배치 */
-    width: 178px;
-    height: 630px;
-    padding: 1rem; /* padding 값을 통합 */
-    justify-content: space-between; /* 자식 요소 사이에 균등한 간격을 설정 */
+    width: 178px; /* 고정 너비 */
+    height: 630px; /* 고정 높이 */
+    padding: 1rem; /* 패딩 값 설정 */
+    justify-content: space-between; /* 자식 요소 사이에 균등한 간격 설정 */
     align-items: flex-start; /* 자식 요소를 교차축의 시작점에 정렬 */
-    border-radius: 10px;
-    background-color: #0554f2;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); /* 그림자 설정 */
+    border-radius: 10px; /* 둥근 모서리 */
+    background-color: #0554f2; /* 배경 색상 */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* 그림자 설정 */
   }
   
+  /* 단계 섹션 스타일 */
   .Step-Section {
-    display: flex; /* Flexbox를 사용하여 자식 요소를 수평으로 배치 */
+    display: flex;
     flex-direction: column; /* 자식 요소를 수직으로 배치 */
     justify-content: flex-start; /* 자식 요소를 컨테이너의 시작점에 정렬 */
     list-style: none; /* 리스트 점 없애기 */
-    color: white;
-    font-size: 14pt;
-    padding: 0; /* 리스트 요소의 기본 패딩 제거 */
+    color: white; /* 텍스트 색상 */
+    font-size: 14pt; /* 폰트 크기 */
+    padding: 0; /* 기본 패딩 제거 */
   }
   
+  /* 단계 스타일 */
   .Step {
     padding-top: 50px; /* 상단 패딩 설정 */
   }
   
+  /* 단계 텍스트 스타일 */
   .Step-Text {
-    margin-top: 20px; /* 비율 대신 픽셀 값으로 설정 */
+    margin-top: 20px; /* 상단 여백 설정 */
   }
   
-  
- 
-
-
-  /* progress 바 css */
+  /* 진행 바 스타일 */
   .progress-bar-container {
     position: relative;
-    left: 10px;
-    height: 20px;
-    width: 100pt;
-    background-color: #818181;
-    border-radius: 13px;
-    margin: 20px 0;
+    height: 20px; /* 고정 높이 */
+    width: 100px; /* 고정 너비 */
+    background-color: #818181; /* 배경 색상 */
+    border-radius: 13px; /* 둥근 모서리 */
+    margin: 20px 0; /* 상하 여백 설정 */
   }
   
   .progress {
-    
-    height:20px;
-    background-color: white;
-    border-radius: 10px;
-    transition: width 0.3s;
+    height: 20px; /* 고정 높이 */
+    background-color: white; /* 진행 상태 색상 */
+    border-radius: 13px; /* 둥근 모서리 */
+    transition: width 0.3s; /* 진행 애니메이션 */
   }
   
-   /* 페이지 이동버튼 css */
+  /* 페이지 이동 버튼 스타일 */
+  .Next, .Back {
+    display: flex;
+    align-items: center; /* 버튼 텍스트를 수직 중앙 정렬 */
+    justify-content: center; /* 버튼 텍스트를 수평 중앙 정렬 */
+    padding: 10px 20px; /* 내부 여백 설정 */
+    border-radius: 5px; /* 둥근 모서리 */
+    font-size: 12pt; /* 폰트 크기 */
+    text-decoration: none; /* 링크 장식 제거 */
+  }
   
   .Next {
-    display: flex;
-    position: relative;
-    top: 210px; /* 원래 위치에서 10px 아래로 이동 */
-    left: 1080px; /* 원래 위치에서 20px 오른쪽으로 이동 */
-    background-color: #0554f2;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 12pt;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    position: absolute; /* 절대 위치 지정 */
+    right: -1300px; /* 오른쪽에 위치 */
+    background-color: #ffffff; /* 배경 색상 */
   }
-
+  
+  .Next:hover {
+    background-color: #0554f2; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 텍스트 색상 변경 */
+  }
+  
+  
   .Back {
-    display: flex;
-    position: relative;
-    top: 210px; /* 상단에 위치 */
-    left: 0; /* 왼쪽에 위치 */
-    background-color: white;
-    color: rgb(11, 11, 11);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 12pt;
-    margin-top: 20px;
-    transition: background-color 0.3s;
+    position: absolute; /* 절대 위치 지정 */
+    left: 1300px; /* 왼쪽에 위치 */
+    background-color: white; /* 배경 색상 */
+    color: #333; /* 텍스트 색상 */
   }
+  
+  .Back:hover {
+    background-color: #0554f2; /* 호버 시 배경색 변경 */
+    color: white; /* 호버 시 텍스트 색상 변경 */
+  }
+  
+  

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useReactToPrint } from "react-to-print";
 import { useTheme } from '../context/ThemeContext'; // useTheme 훅을 사용
+import SideBar from "../components/SideBar";
 import "./Resume.css";
 
 const Resume5 = () => {
@@ -30,15 +31,18 @@ const Resume5 = () => {
   });
 
   return (
-    <div className="resume" >
-      <button onClick={handlePrint}>export</button>
-      <div id="Info" ref={componentRef}> 
+    <div className="resume">
+      <h1>수고했습니다!</h1>
+      <span>이력서를 확인하고 출력해보세요</span>
+       <SideBar />
+      <button className="Export-btn" onClick={handlePrint}>export</button>
+      <div id="Info" > 
         {basicInfo ? (
-           <div className="resume-container">
-            <div className="resume-header">
+           <div className="resume-container"  ref={componentRef}>
+            <div className="resume-header" >
               <div className="resume-header1">
               {basicInfo.image && (
-                      <img src={basicInfo.image} alt="Profile" style={{ maxWidth: '60%', height: 'auto' }} />
+                      <img src={basicInfo.image} alt="Profile" style={{ maxWidth: '50%', height: 'auto' }} />
                     )}
                     <h1>{basicInfo.name}</h1>
                     <p>{basicInfo.birthDate}</p>
@@ -52,7 +56,7 @@ const Resume5 = () => {
             </div>
             
             <div className="resume-section">
-            <h2 style={{ borderTop: `5px solid ${theme}` }}>학력</h2>
+            <h3 style={{ borderTop: `5px solid ${theme}` }}>학력</h3>
             <table className="resume-table">
                 <tr>
                     <th style={{ border: `2px solid ${theme}` }}>학교</th>
@@ -68,7 +72,7 @@ const Resume5 = () => {
         </div>
 
         <div className="resume-section">
-            <h2 style={{ borderTop: `5px solid ${theme}` }}>경력1</h2>
+            <h3 style={{ borderTop: `5px solid ${theme}` }}>경력1</h3>
             <table className="resume-table">
                 <tr>
                     <th style={{ border: `2px solid ${theme}` }}>회사명</th>
@@ -85,7 +89,7 @@ const Resume5 = () => {
                     <td>{techInfo.skill}</td>
                 </tr>
             </table>
-            <h2 style={{ borderTop: `2px solid ${theme}` }}>경력2</h2>
+            <h3>경력2</h3>
             <table className="resume-table">
             <tr>
                     <th style={{ border: `2px solid ${theme}` }}>회사명</th>
@@ -102,7 +106,7 @@ const Resume5 = () => {
                     <td>파이썬 </td>
                 </tr>
             </table>
-            <h2 style={{ borderTop: `2px solid ${theme}` }}>경력3</h2>
+            <h3>경력3</h3>
             <table className="resume-table">
             <tr>
                     <th style={{ border: `2px solid ${theme}` }}>회사명</th>
@@ -129,7 +133,7 @@ const Resume5 = () => {
                   </td>
                 </tr>
                 <tr>
-                  <th style={{ borderTop: `3px solid ${theme}` }}>본문</th>
+                  <th className='intro' >본문</th>
                 </tr>
                 <tr>
                   <td>
