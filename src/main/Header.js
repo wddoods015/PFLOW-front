@@ -23,7 +23,7 @@ function Header() {
         <div className='menu'>
           <div className='nav-menu'>
             <div className='products'>
-              <Link to="/resume/Resume1" className='resume-writing'  >이력서 작성</Link>
+              <Link to="/resume/Resume1" className='resume-writing'  Z>이력서 작성</Link>
             </div>
             <div className='solutions'>
               <span className='company-recommendation'>회사 추천</span>
@@ -37,7 +37,7 @@ function Header() {
           </div>
           <button className='btn'>
             <div className='btn-login'>
-              <span className='login'>Login</span>
+              <Link to="/Login" className='login'>Login</Link>
             </div>
           </button>
         </div>

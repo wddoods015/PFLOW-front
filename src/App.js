@@ -12,6 +12,7 @@ import Resume5 from './resume/Resume5';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { ProgressProvider } from './context/ProgressContext';
+import Login from './Login';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/resume/Resume3" element={<Resume3 />} />
             <Route path="/resume/Resume4" element={<Resume4 />} />
             <Route path="/resume/Resume5" element={<Resume5 />} />
+            <Route path="/Login" element={<Login />} />
           </Routes>
         <Footer />
         </div>

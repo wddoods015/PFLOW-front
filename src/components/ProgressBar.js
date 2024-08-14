@@ -26,7 +26,7 @@ const ProgressBar = () => {
   return (
     <>
       <div className="progress-bar-container">
-        <div className="progress" style={{ width: `${percentage}pt` }} />
+        <div className="progress" style={{ width: `${percentage}%` }} />
       </div>
       <div className="Page-btn">
         <button

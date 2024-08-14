@@ -1,7 +1,7 @@
 /* 사이드바 CSS */
 .SideBar {
-    top: -180px;
-    left: -300px;
+  margin-top: 70px;
+   margin-right: 60px;
     position: relative;
     display: flex;
     flex-direction: column; /* 자식 요소를 수직으로 배치 */
@@ -40,7 +40,7 @@
   .progress-bar-container {
     position: relative;
     height: 20px; /* 고정 높이 */
-    width: 100px; /* 고정 너비 */
+    width: 100%; /* 고정 너비 */
     background-color: #818181; /* 배경 색상 */
     border-radius: 13px; /* 둥근 모서리 */
     margin: 20px 0; /* 상하 여백 설정 */

@@ -8,11 +8,12 @@ const Resume2 = () => {
   const navigate = useNavigate(); // navigate 함수를 가져옴
   const [basicInfo, setBasicInfo] = useState({
     name: "",
-    birthDate: "",
+    age: "",
     contact: "",
     email: "",
     address: "",
     image: null,
+    
   });
 
   
@@ -54,32 +55,41 @@ const Resume2 = () => {
 
   // 페이지 폼 만들기
   return (
-    <div className="resume" onSubmit={handleSubmit}>
+    <div className="container" onSubmit={handleSubmit}>
+      <SideBar />
       <form className="Form" >
         <h1 className="h1">사용자님의 기본 정보를 입력해주세요!</h1>
-        <h3 className="h3">기본 정보</h3>
-        <SideBar />
+        <h3 className="h3-1">기본 정보</h3>
+        
         <table className="tableForm">
           <tbody>
             <tr>
               <th>사진 첨부</th>
               <td>
-                <input className="file" type="file" name="image" accept="image/*" value={basicInfo.photo} onChange={BasicInfoChange} /></td>
+                <input className="file" id="file" type="file" name="image" accept="image/*" value={basicInfo.photo} onChange={BasicInfoChange} />
+                <label htmlFor="file" className="file-btn">+</label>
+                {basicInfo.image && <img src={basicInfo.image} style={{ maxWidth: '100px', maxHeigh: '100px', marginLeft: '50px'}} />}                
+                </td>
               <th>이름:</th>
               <td><input type="text" name="name" value={basicInfo.name} onChange={BasicInfoChange}/></td>
             </tr>
             <tr>
               <th>이메일 주소:</th>
               <td><input type="email" name="email" value={basicInfo.email} onChange={BasicInfoChange}/></td>
-              <th>생년월일:</th>
-              <td><input type="date" name="birthDate" value={basicInfo.birthDate} onChange={BasicInfoChange}/></td>
+              <th>나이:</th>
+              <td><input type="text" name="age" value={basicInfo.age} onChange={BasicInfoChange}/></td>
             </tr>
             <tr>
               <th>연락처:</th>
-              <td><input type="tel" name="contact" value={basicInfo.contact} onChange={BasicInfoChange}/></td>
+              <td><input type="tel" name="contact" value={basicInfo.contact} onChange={BasicInfoChange} placeholder="번호만 입력하세요."/></td>
               <th>거주지:</th>
               <td><input type="text" name="address" value={basicInfo.address} onChange={BasicInfoChange}/></td>
             </tr>
+            <tr>
+        <th>기술태그</th>
+        <td><input type="text" name="skill" value={basicInfo.skill} onChange={BasicInfoChange}/></td>
+      </tr>
+
           </tbody>
         </table>
         <button className="submit" type="submit">저장하기</button>

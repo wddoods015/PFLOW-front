@@ -1,71 +1,136 @@
  
   
-  /* Resume 2,3,4  최상위에서 태그 */
+  /* Resume 1,2,3,4,5  최상위에서 태그  전체 사이즈를 정의*/
 
-  .Form { 
-    background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 900px;
-  height: 630px;
-  text-align: center;
-  margin: 0 auto; /* 중앙 정렬 */
-  position: relative; /* 폼 위치 조정 */
-  top: 100px; /* 상단 내비바 높이만큼 하단으로 이동 */
+  .container {
+    width: 1920px;
+    height: 1300px;
+    display: flex;
+    justify-content: center; /* 수평 중앙 정렬 */
+    position: relative;
   }
 
-  /* Resume 2,3,4 제목 */
+  .form1-5 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 980px;
+    height: 1300px;
+    text-align: center;
+    position: relative; /* 폼 위치 조정 */
+    top: 70px; /* 상단 내비바 높이만큼 하단으로 이동 */
+  }
+
+  /* Resume 2,3,4 제목  1, 5는 클래스명 분리해야할듯 */
   .h1 {                 
-    font-size: 24px;
-    margin: 40px;
+    font-size: 28px;
+    margin: 30px;
     text-align: center;
   }
 
-/* Resume 2,3,4 본문 소제목 */
-  .h3 {
+/* Resume Resume3 본문 소제목 */
+  .h3-1 {
     margin: 20px;
     text-align: left;
   }
 
-  
-  /* Resume 2,3,4 본문 table 태그 */
-
-  .tableForm {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .tableForm th,
-  .tableForm td {
-    padding: 10px;
+  .h3-2 {
+    margin: 20px;
+    margin-top: 180px;
     text-align: left;
   }
-  
-  .tableForm th {
-    width: 10%;
-    color: black;
+
+  /* Resume 2,3,4 작성틀 태그 */
+  .Form { 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* 모서리 둥글게 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 980px;
+    height: 640px;
+    text-align: center;
+    position: relative; /* 폼 위치 조정 */
+    top: 70px; /* 상단 내비바 높이만큼 하단으로 이동 */
   }
+
+
+.tableForm, .tableForm2 {
+  margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;  
+  position: absolute;
+  left: 52%;
+  transform: translateX(-50%);
+}
+
+.tableForm {
+  top: 140px;
   
-  .tableForm td {
-    width: 40%;
+}
+
+.tableForm2 {
+  top: 340px;
+}
+
+.tableForm th, .tableForm2 th,
+.tableForm td, .tableForm2 td {
+  padding: 10px;
+  text-align: left;
+}
+
+.tableForm th, .tableForm2 th {  /* table header */
+  width: 10%; /* table 기준 13% */
+  color: black;
+}
+
+.tableForm td, .tableForm2 td {  /* table data */
+  width: 40%;
+}
+
+/* Resume 2,3,4 본문 input 속성 */
+.tableForm input[type="text"],
+.tableForm select,
+.tableForm input[type="email"],
+.tableForm input[type="tel"],
+.tableForm input[type="date"],
+
+/* Resume 3의 2번째 테이블 속성*/
+.tableForm2 input[type="text"],
+.tableForm2 select,
+.tableForm2 input[type="email"],
+.tableForm2 input[type="tel"],
+.tableForm2 input[type="date"] {
+  width: 80%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+  
+  /* input type=file의 기본설정값 없애기 */
+  .tableForm input[type="file"] {
+    display: none;
   }
+
   
- /* Resume 2,3,4 본문 input 속성 */
-  .tableForm input[type="text"],
-  .tableForm select[type="select"], /* 3페이지 select option */
-  .tableForm input[type="email"],
-  .tableForm input[type="tel"],
-  .tableForm input[type="date"]{
-    width: 80%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+
+  /* 파일 업로드 버튼 커스텀 속성 */ 
+  .file-btn {
+    display: inline-block;
+  width: 60px; /* 버튼의 너비 */
+  height: 60px; /* 버튼의 높이 */
+  background-color: black; /* 버튼 배경색 */
+  color: white; /* 텍스트 색상 */
+  border-radius: 5px; /* 버튼을 원형으로 만들기 */
+  text-align: center; /* 텍스트를 중앙에 정렬 */
+  line-height: 60px; /* 텍스트를 수직 중앙에 정렬 */
+  font-size: 24px; /* 텍스트 크기 */
+  user-select: none; /* 텍스트 선택 방지 */
   }
-  
-  /*input type=file의 기본설정값 없애기*/
+
  
   .submit{
     position: absolute;
@@ -130,7 +195,7 @@
     box-sizing: border-box; 
   }
 
-  .write-area input[type="text"]{
+  .write-area textarea[type="text"]{
     width: 280pt;
     height: 280pt;
     border: 1px solid #ccc;
@@ -286,9 +351,11 @@ p {
 
 /* Resume 5 출력버튼 */
 .Export-btn {
+  width: 80px;
+  height: 40px;
   position: absolute; /* 절대 위치 지정 */
-  top: 100px; /* 하단에 위치 */
-  left: 900px; /* 왼쪽에 위치 */
+  top: 50px; /* 하단에 위치 */
+  left: 860px; /* 왼쪽에 위치 */
   background-color: #0554f2; /* 배경 색상 */
   color: white; /* 텍스트 색상 */
   border-radius: 5px; /* 둥근 모서리 */

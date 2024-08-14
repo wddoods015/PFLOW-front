@@ -31,10 +31,11 @@ const Resume5 = () => {
   });
 
   return (
-    <div className="resume">
-      <h1>수고했습니다!</h1>
-      <span>이력서를 확인하고 출력해보세요</span>
-       <SideBar />
+    <div className="container">
+      <SideBar />
+      <div className='form1-5'>
+      <h1>수고하셨습니다!</h1>
+      <h2>완성된 이력서를 출력해보세요 : )</h2>
       <button className="Export-btn" onClick={handlePrint}>export</button>
       <div id="Info" > 
         {basicInfo ? (
@@ -45,7 +46,7 @@ const Resume5 = () => {
                       <img src={basicInfo.image} alt="Profile" style={{ maxWidth: '50%', height: 'auto' }} />
                     )}
                     <h1>{basicInfo.name}</h1>
-                    <p>{basicInfo.birthDate}</p>
+                    <p>{basicInfo.age}세</p>
                </div>  
                <div className="resume-header2">
             <h2>연락처</h2>
@@ -86,7 +87,7 @@ const Resume5 = () => {
                     <td>{techInfo.atitle}</td>
                     <td>{techInfo.sdate}</td>
                     <td>{techInfo.edate}</td>
-                    <td>{techInfo.skill}</td>
+                    <td>{basicInfo.skill}</td>
                 </tr>
             </table>
             <h3>경력2</h3>
@@ -96,14 +97,12 @@ const Resume5 = () => {
                     <th style={{ border: `2px solid ${theme}` }}>직함</th>
                     <th style={{ border: `2px solid ${theme}` }}>입사일</th>
                     <th style={{ border: `2px solid ${theme}` }}>퇴사일</th>
-                    <th style={{ border: `2px solid ${theme}` }}>보유기술</th>
                 </tr>
                 <tr>
                     <td>소프트웨어 엔지니어</td>
                     <td>OOO회사</td>
                     <td>0000년 00월 </td>
                     <td>0000년 00월 </td>
-                    <td>파이썬 </td>
                 </tr>
             </table>
             <h3>경력3</h3>
@@ -113,14 +112,12 @@ const Resume5 = () => {
                     <th style={{ border: `2px solid ${theme}` }}>직함</th>
                     <th style={{ border: `2px solid ${theme}` }}>입사일</th>
                     <th style={{ border: `2px solid ${theme}` }}>퇴사일</th>
-                    <th style={{ border: `2px solid ${theme}` }}>보유기술</th>
                 </tr>
                 <tr>
                     <td>소프트웨어 엔지니어</td>
                     <td>OOO회사</td>
                     <td>0000년 00월 </td>
-                    <td>0000년 00월 </td>
-                    <td>파이썬 </td>
+                    <td>0000년 00월 </td>                    
                 </tr>
             </table>
                 <table>
@@ -147,6 +144,7 @@ const Resume5 = () => {
         ) : (
           <p>기본 정보가 없습니다.</p>
         )}
+      </div>
       </div>
       </div>
   );

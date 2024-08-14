@@ -14,11 +14,12 @@ const Resume1 = () => {
     };
 
     return (
-      <div className="container">
-        <h1>환영합니다 이력서 작성을 도와드릴게요!</h1>
-        <span>이력서 테마를 선택하세요!</span>
-        <SideBar />
-        <div className="resume">
+        <div className="container">
+             <SideBar />
+            <div className="form1-5">
+<h1>환영합니다 이력서 작성을 도와드릴게요!</h1>
+<h2>이력서 테마를 선택해 주세요</h2>
+       
             <div className="color-btn">
                 <button 
                     className="blue-sample" 
@@ -151,7 +152,7 @@ const Resume1 = () => {
                     </table>
                 </div>
             </div>
-        </div>
+            </div>
         </div>
     );
 };
