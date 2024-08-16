@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './main/Header';
+import Main from './main/Main';
+import Login from './Login';
 import Footer from './main/Footer';
-import Company from './main/Company';
-import Community from './main/Community';
 import Resume1 from './resume/Resume1';
 import Resume2 from './resume/Resume2';
 import Resume3 from './resume/Resume3';
@@ -12,7 +12,7 @@ import Resume5 from './resume/Resume5';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { ProgressProvider } from './context/ProgressContext';
-import Login from './Login';
+
 
 function App() {
   return (
@@ -25,8 +25,7 @@ function App() {
           <Routes>  
             <Route path="/" element={
               <>
-                <Company />
-                <Community />
+                <Main />
               </>
             } />
             <Route path="/resume/Resume1" element={<Resume1 />} />

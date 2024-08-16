@@ -11,7 +11,8 @@ const Resume2 = () => {
     age: "",
     contact: "",
     email: "",
-    address: "",
+    address1: "",
+    address2: "",
     image: null,
     
   });
@@ -45,6 +46,7 @@ const Resume2 = () => {
    console.log(JSON.stringify(basicInfo));
     // 다음 페이지로 이동
     navigate('/resume/Resume3');
+    alert("기본정보가 저장되었습니다.");
 
   }
 
@@ -59,22 +61,21 @@ const Resume2 = () => {
       <SideBar />
       <form className="Form" >
         <h1 className="h1">사용자님의 기본 정보를 입력해주세요!</h1>
-        <h3 className="h3-1">기본 정보</h3>
-        
+        {basicInfo.image && <img src={basicInfo.image} style={{ maxWidth: '100px', maxHeigh: '100px', marginLeft: '50px'}} />}
         <table className="tableForm">
           <tbody>
+          <input className="file" id="file" type="file" name="image" accept="image/*" value={basicInfo.photo} onChange={BasicInfoChange} />
+          <label htmlFor="file" className="file-btn">+</label>
             <tr>
               <th>사진 첨부</th>
               <td>
-                <input className="file" id="file" type="file" name="image" accept="image/*" value={basicInfo.photo} onChange={BasicInfoChange} />
-                <label htmlFor="file" className="file-btn">+</label>
-                {basicInfo.image && <img src={basicInfo.image} style={{ maxWidth: '100px', maxHeigh: '100px', marginLeft: '50px'}} />}                
-                </td>
+                <p className="warn">최대 300KB까지 첨부 가능합니다.</p>                
+                </td> 
               <th>이름:</th>
               <td><input type="text" name="name" value={basicInfo.name} onChange={BasicInfoChange}/></td>
             </tr>
             <tr>
-              <th>이메일 주소:</th>
+              <th>이메일:</th>
               <td><input type="email" name="email" value={basicInfo.email} onChange={BasicInfoChange}/></td>
               <th>나이:</th>
               <td><input type="text" name="age" value={basicInfo.age} onChange={BasicInfoChange}/></td>
@@ -82,14 +83,15 @@ const Resume2 = () => {
             <tr>
               <th>연락처:</th>
               <td><input type="tel" name="contact" value={basicInfo.contact} onChange={BasicInfoChange} placeholder="번호만 입력하세요."/></td>
-              <th>거주지:</th>
-              <td><input type="text" name="address" value={basicInfo.address} onChange={BasicInfoChange}/></td>
+              <th>주소1:</th>
+              <td><input type="text" name="address1" value={basicInfo.address} onChange={BasicInfoChange} placeholder="도/시/구 입력"/></td>
             </tr>
             <tr>
         <th>기술태그</th>
         <td><input type="text" name="skill" value={basicInfo.skill} onChange={BasicInfoChange}/></td>
+        <th>주소2:</th>
+        <td><input type="text" name="address2" value={basicInfo.address} onChange={BasicInfoChange} placeholder="상세주소 입력"/></td>
       </tr>
-
           </tbody>
         </table>
         <button className="submit" type="submit">저장하기</button>

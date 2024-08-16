@@ -342,6 +342,12 @@
 
 
 /* 정보 없음 메시지 */
+.warn {
+  
+  font-size: 0.8em;
+  color: #fd0303;
+}
+
 p {
   font-size: 1.2em;
   color: #666;
