@@ -13,7 +13,7 @@
     flex-wrap: nowrap;
     gap: 10px;
     position: relative;
-    width: 100%;
+    width: 100vw;
     max-width: 1920px;
     margin: 0 auto;
   }
@@ -32,12 +32,11 @@
     overflow: hidden;
   }
   /* 모바일 사이즈 반응형 스타일 */
-@media (max-width: 767px) {
+@media (max-width: 577px) {
   .main-container {
     flex-direction: column; /* 모바일에서는 세로로 배치 */
-    align-items: stretch; /* 자식 요소들이 가로로 꽉 차도록 */
     gap: 5px; /* 간격 조정 */
-    padding: 10px; /* 모바일에서는 패딩 추가 */
+    padding: 5px; /* 모바일에서는 패딩 추가 */
     overflow: auto; /* 모바일에서 오버플로우를 스크롤 가능하게 */
   }
   
@@ -48,16 +47,7 @@
   }
 }
 
-@media (max-width: 480px) {
-  .main-container {
-    gap: 3px; /* 작은 화면에서는 간격 더 좁게 */
-  }
 
-  .landing-page {
-    padding: 10px; /* 더 작은 화면에서는 패딩을 줄임 */
-  }
-  
-}
   /* 포커스 시 외부테두리 제거 */
   input,
   select,
@@ -66,19 +56,178 @@
     outline: 0;
   }
  /*------------------------------------헤더 상단 내비바---------------------------------*/
-  .header {
-    display: flex;
+  .nav {
     align-items: center;
+    background-color: transparent;
     justify-content: space-between;
     flex-wrap: nowrap;
-    position: relative;
+    position: fixed;
     gap: 1000px; /* gap을 줄여서 더 작은 화면에서도 대응 */
-    width: 100%;
-    max-width: 120px;
+    width: 100vw;
+    max-width: 1920px;
     margin: 0 0 0 0;
     padding: 16px 60px 16px 60px;
-    z-index: 12;
+    z-index: 99;
   }
+  
+  @media (max-width: 576px) {
+    .nav {
+        display: none; /* 모바일 화면에서는 데스크탑 내비게이션 바 숨김 */
+    }
+
+    .m-nav {
+        display: flex; /* 모바일 화면에서는 모바일 내비게이션 바 보이도록 설정 */
+    }
+
+}
+
+/* 데스크탑 화면 (577px 이상) */
+@media (min-width: 577px) {
+    .nav {
+        display: flex; /* 데스크탑 화면에서는 데스크탑 내비게이션 바 보이도록 설정 */
+    }
+
+    .m-nav {
+        display: none; /* 데스크탑 화면에서는 모바일 내비게이션 바 숨김 */
+    }
+
+    .title {
+      font-family: Pretendard, var(--default-font-family);
+      font-size: 40pt;
+      font-weight: 700;
+      text-align: center;
+    }
+    .sub-title {
+      color: #212529;
+      font-family: Pretendard, var(--default-font-family);
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .main-btn-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      gap: 10px;
+      position: relative;
+      width: 196px;
+      padding: 20px 40px 20px 40px;
+      cursor: pointer;
+      background: #0554f2;
+      border: none;
+      z-index: 44;
+      border-radius: 6px;
+    }
+    .main-btn {
+      flex-shrink: 0;
+      flex-basis: auto;
+      position: relative;
+      height: 23px;
+      color: #ffffff;
+      font-family: Pretendard, var(--default-font-family);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 23px;
+      text-align: left;
+      white-space: nowrap;
+      letter-spacing: -0.36px;
+      z-index: 83;
+    }
+}
+
+/* 데스크탑 화면 (577px 이하) */
+@media (max-width: 577px) {
+  .title {
+    font-size: 20pt; /* 40pt를 대략적으로 2.4em으로 변환 */
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .sub-title {
+    font-size: 14px; /* 18px를 대략적으로 1.2em으로 변환 */
+    line-height: 24px; /* 30px를 대략적으로 1.5em으로 변환 */
+    text-align: center;
+  }
+
+  .main-btn-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 10px;
+    position: relative;
+    width: 166px;
+    padding: 20px 40px 10px 40px;
+    cursor: pointer;
+    background: #0554f2;
+    border: none;
+    z-index: 44;
+    border-radius: 6px;
+  }
+  .main-btn {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 23px;
+    color: #ffffff;
+    font-family: Pretendard, var(--default-font-family);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 23px;
+    text-align: left;
+    white-space: nowrap;
+    letter-spacing: -0.36px;
+    z-index: 83;
+  }
+
+  .footer {
+    padding: 20px 10px; /* 패딩 조정 */
+    margin: 0; /* 여백 제거 */
+    font-size: 50%;
+  }
+
+.footer-1, .info-tag {
+  flex-direction: column; /* 수직 정렬로 변경 */
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+}
+  .footer-3, .btm-tag {
+    flex-direction: column; /* 수직 정렬로 변경 */
+    align-items: center; /* 중앙 정렬 */
+    justify-content: center; /* 중앙 정렬 */
+    width: 100%; /* 전체 너비 사용 */
+  }
+
+  .info-tag, span {
+    width: 100%; /* 전체 너비 사용 */
+    margin-bottom: 20px; /* 하단 여백 추가 */
+    gap: 15px; /* 요소 간의 간격 조정 */
+  }
+
+  .footer-3, .btm-tag {
+    width: 100%; /* 전체 너비 사용 */
+    margin-bottom: 20px; /* 하단 여백 추가 */
+    gap: 15px; /* 요소 간의 간격 조정 */
+  }
+
+  .logo-description {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* 간격 조정 */
+  }
+
+  .logo-icon-37, .vector-3a, .vector-3b, .vector-3c {
+    width: 100%; /* 전체 너비 사용 */
+    height: auto; /* 비율에 맞게 높이 자동 조정 */
+  }
+}
+
   
   /* 아이콘과 글자logo 최상위 태그 */
   .logo {
@@ -157,16 +306,16 @@
     line-height: 34px;
     text-align: left;
     white-space: nowrap;
+    text-decoration: none;
     z-index: 22;
   }
 
   /*-----------------------상단 메뉴바------------------------------------------------- */
   .menu {
     display: flex; /* 플렉스 박스 레이아웃을 활성화합니다. */
-    justify-content: space-between; /* 자식 요소들 사이에 균등한 간격을 설정합니다. */
     align-items: center; /* 자식 요소들을 수직으로 중앙에 정렬합니다. */
     gap: 20px; /* 자식 요소 간의 간격을 설정합니다. */
-    width: 80%; /* 컨테이너의 너비를 100%로 설정하여 반응형으로 만듭니다. */
+    width: 80vw;/* 컨테이너의 너비를 100%로 설정하여 반응형으로 만듭니다. */
   }
   
   .tags {
@@ -210,8 +359,71 @@
     white-space: nowrap;
     text-decoration: none;
   }
+  
+/* 모바일 뷰 상단 내비바 css*/
+  .m-nav {
+    width: 100vw;
+    padding: 10px 50px 0px 40px;
+    justify-content: space-between;
+  }
+/* 드롭다운 기본 숨기기 */
+  .dropdown {
+    display: none; /* 기본적으로 숨겨진 상태 */
+    list-style: none;
+    background-color: #fff;
+    color: black;
+    padding-top: 10%;
+    border-bottom: 1px solid #ddd; /* 메뉴의 아래쪽에만 경계선 추가 */
+    width: 100vw; /* 전체 화면 너비 */
+    z-index: 1000; /* 메뉴가 다른 요소 위에 위치하도록 */
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* 부드러운 애니메이션 */
+    max-height: 0; /* 기본적으로 메뉴를 숨김 */
+    opacity: 0; /* 기본적으로 메뉴를 숨김 */
+    overflow: hidden; /* 메뉴가 펼쳐질 때만 보이도록 */
+    
+  }
+
+  .dropdown li {
+    text-decoration: none;
+    text-align: center;
+    color: #333;
+}
+  .show {
+    display: block;
+    max-height: 500px; /* 메뉴의 최대 높이 */
+    opacity: 1; /* 메뉴를 보이도록 */
+  }
+/* 모바일 로고 */
+  .m-pflow {
+    height: 34px;
+    color: #3c3c40;
+    font-family: Impact, var(--default-font-family);
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: left;
+    white-space: nowrap;
+    text-decoration: none;
+    z-index: 22;
+  }
+/* 모바일 로그인 버튼 */  
+.m-login-btn {
+  margin-left: 120%;
+  width: 80px;
+  height: 30px;
+  background: #0554f2;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  font-family: Pretendard, var(--default-font-family);
+  font-size: 12pt;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+}
   /*---------------------------------- 메인페이지 3섹션을 감싸는 태그---------------------*/
   .main {
+    padding-top: 100px;
     display: flex;
     flex-direction: column; /* 자식 요소를 수직으로 배치 */
     align-items: center; /* 자식 요소를 수평 중앙에 배치 */
@@ -256,53 +468,10 @@
     gap: 40px;
     position: relative;
   }
-  .title {
-    font-family: Pretendard, var(--default-font-family);
-    font-size: 40pt;
-    font-weight: 700;
-    text-align: center;
-  }
-  .sub-title {
-    color: #212529;
-    font-family: Pretendard, var(--default-font-family);
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 30px;
-    text-align: center;
-  }
+
 
 /* 메인 페이지 버튼 속성*/
-  .main-btn-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    flex-shrink: 0;
-    gap: 10px;
-    position: relative;
-    width: 196px;
-    padding: 20px 40px 20px 40px;
-    cursor: pointer;
-    background: #0554f2;
-    border: none;
-    z-index: 44;
-    border-radius: 6px;
-  }
-  .main-btn {
-    flex-shrink: 0;
-    flex-basis: auto;
-    position: relative;
-    height: 23px;
-    color: #ffffff;
-    font-family: Pretendard, var(--default-font-family);
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 23px;
-    text-align: left;
-    white-space: nowrap;
-    letter-spacing: -0.36px;
-    z-index: 83;
-  }
+  
   .icon {
     display: flex;
     align-items: flex-start;
@@ -327,20 +496,19 @@
 /*------------------------- footer css 하단 고정--------------------------------------*/
 .footer {
   display: flex;
-  position: absolute; /* 부모 컨테이너에 대해 절대 위치 */
+  position: sticky; /* 부모 컨테이너에 대해 절대 위치 */
   bottom: 0; /* 부모 컨테이너의 하단에 배치 */
+  align-items: left;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  gap: 200px;
+  gap: 30px;
   width: 100%;
-  height: 220px;
   margin: 242px 0 0 0;
-  padding: 140px 220px 135px 218px;
+  padding: 50px 200px 50px 200px;
   background: #3c3c40;
+  color: white;
   z-index: 99;
 }
+
 .logo-description {
   display: flex;
   flex-direction: column;
@@ -437,16 +605,34 @@
   
  /* 여기서부터 푸터 수정하면됨...ㅂㄷㅂㄷ */
 
-
-
-
+ .footer-1 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+.info-tag {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+.footer-3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+.btm-tag {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+  
  
-
-
-
- 
-
-  
-  
-  
-  
+.social-icon {
+  margin-top: 30px;
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  }

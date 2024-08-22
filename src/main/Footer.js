@@ -1,11 +1,12 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import './main.css';
 
 function Footer() {
   return (
     <div className='footer'>
-      <div className='content-34'>
-        <div className='info'>
+      <div className='footer-1'>
           <div className='logo-description'>
             <div className='logo-35'>
               <span className='pflow-36'>PFLOW</span>
@@ -19,37 +20,31 @@ function Footer() {
                 </div>
               </div>
             </div>
-            <span className='success-helper'>
+           </div>
+           <div className='info-tag'>
+            <span>이력서 작성</span>
+            <span>회사 추천</span>
+            <span>회사 검색</span>
+            <span>커뮤니티</span>
+        </div>
+          </div>
+          <span className='footer-2'>
               성공적인 취업을 위한 도우미
             </span>
-          </div>
-          <div className='info-3d'>
-            <span className='resume-writing-3e'>이력서 작성</span>
-          </div>
-          <div className='info-3f'>
-            <span className='company-recommendation-40'>회사 추천</span>
-          </div>
-          <div className='info-41'>
-            <span className='company-search-42'>회사 검색</span>
-          </div>
-          <div className='info-43'>
-            <span className='community-44'>커뮤니티</span>
-          </div>
-        </div>
-        <div className='btm'>
-          <div className='terms-and-condition'>
-            <span className='terms-privacy'>Terms & privacy</span>
-            <span className='security'>Security</span>
-            <span className='status'>Status</span>
-            <span className='aicc-pflow'>©2024 AICC PFlow.</span>
+          <div className='footer-3'>
+          <div className='btm-tag'>
+            <span>Terms & privacy</span>
+            <span>Security</span>
+            <span>Status</span>
+            <span>©2024 AICC PFlow.</span>
           </div>
           <div className='social-icon'>
-            {/* Social icons */}
+            <FontAwesomeIcon icon={faFacebookF} size="1x" style={{ color: '#ffffff' }} />
+            <FontAwesomeIcon icon={faLinkedinIn} size="0.5x" style={{ color: '#ffffff' }} />
+            <FontAwesomeIcon icon={faXTwitter} size="0.5x" style={{ color: '#ffffff' }} />
+          </div>
           </div>
         </div>
-        <div className='line' />
-      </div>
-    </div>
   );
 }
 
