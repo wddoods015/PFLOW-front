@@ -23,9 +23,9 @@ const Sidebar = () => {
                 <Link to="/MyPage/Myactive">내 활동</Link>
                 </li>  
                 <li>
-                <Link to="/MyPage/Inquiries">내 이력서</Link>
+                <Link to="/MyPage/MyResume">내 이력서</Link>
                 </li>
-               <button onClick={handleLogOut}>로그아웃</button>
+               <button onClick={handleLogOut} className="log-out-btn">로그아웃</button>
             </ul>
         </nav>
     );

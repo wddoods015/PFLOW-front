@@ -20,6 +20,7 @@ const Login = () => {
 
     // 로그인 액션 디스패치
     dispatch(login(credentials));
+    alert('정상적으로 로그인 되었습니다.');
   };
 
   return (

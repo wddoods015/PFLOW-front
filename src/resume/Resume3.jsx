@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Resume3.css";
 import ProgressBar from "../components/ProgressBar";
 
 const Resume3 = () => {
+  const location = useLocation();
+  const data = location.state;
+  const navigate = useNavigate();
   const [careerInfo, setCareerInfo] = useState([
     {
       id: 1,
       company: "",
       role: "",
+      part: "",
       sdate: "",
       edate: "",
     },
   ]);
+  console.log(JSON.stringify(data, null, 2))
 
   // // onchange 핸들러
   // const handleChange = (e) => {
@@ -37,6 +42,7 @@ const handleChange = (e, id) => {
       id: careerInfo.length + 1, // 현재 경력 배열의 길이에 +1
       company: "",
       role: "",
+      part: "",
       sdate: "",
       edate: "",
     };
@@ -59,15 +65,15 @@ const handleChange = (e, id) => {
   // post 요청 핸들러
   const handlePost = async () => {
     try{
-      const response = await axios.post('http://localhost:5000/api/resumes',  careerInfo, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      // const response = await axios.post('http://localhost:5000/api/resumes',  careerInfo, {
+      //   withCredentials: true,
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // });
+      navigate('/resume/Resume4',{state: {...data, careerInfo }});
 
-      console.log(careerInfo);
-      console.log('respones ok:',response);
+      console.log('respones ok:',);
     } catch (error) {
       console.error('경력정보 전송오류:', error);
       console.log(careerInfo);
@@ -90,7 +96,7 @@ const handleChange = (e, id) => {
     <div className="career-period">
       <input
         className="input-s-date"
-        type="text"
+        type="date"
         name="sdate"
         value={career.sdate}
         placeholder="시작일 ex) yyyy.mm"
@@ -99,15 +105,13 @@ const handleChange = (e, id) => {
       /
       <input
         className="input-e-date"
-        type="text"
+        type="date"
         name="edate"
         value={career.edate}
         placeholder="종료일 ex) yyyy.mm"
         onChange={(e) => handleChange(e, career.id)} // id 전달
       />
-    </div>
-    <div className="career-company">
-      <input
+  <input
         className="input-company"
         type="text"
         name="company"
@@ -115,12 +119,22 @@ const handleChange = (e, id) => {
         placeholder="회사명"
         onChange={(e) => handleChange(e, career.id)} // id 전달
       />
+    </div>
+    <div className="career-company">  
       <input
         className="input-role"
         type="text"
         name="role"
         value={career.role}
-        placeholder="부서명 / 직책"
+        placeholder="부서명 / 직급"
+        onChange={(e) => handleChange(e, career.id)} // id 전달
+      />
+      <input
+        className="input-role"
+        type="text"
+        name="part"
+        value={career.part}
+        placeholder="담당업무"
         onChange={(e) => handleChange(e, career.id)} // id 전달
       />
     </div>

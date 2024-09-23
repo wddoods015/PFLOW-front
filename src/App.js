@@ -11,6 +11,7 @@ import Post from './community/Post';
 
 import Mypage from './mypage/Mypage';
 import Myactive from './mypage/Myactive';
+import MyResume from './mypage/MyResume';
 
 import Resume from './resume/Resume';
 import Resume1 from './resume/Resume1';

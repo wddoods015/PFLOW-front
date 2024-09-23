@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Community.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedTag, fetchAllPosts, fetchCategoryPost } from '../slices/CategorySlice';
+import { setSelectedTag, resetSelectedTag, fetchAllPosts, fetchCategoryPost, fetchHitPost } from '../slices/CategorySlice';
 
 const Community = () => {
   const [title, setTitle] = useState('');
@@ -13,19 +13,44 @@ const Community = () => {
  
 
   const dispatch = useDispatch();
-  const { allPosts, categoryData, selectedTag } = useSelector((state) => state.category);
+  const { allPosts, categoryData, selectedTag, Maxview} = useSelector((state) => state.category);
 
   // 최초 렌더링 시 모든 포스트를 가져온다
   useEffect(() => {
-    dispatch(fetchAllPosts());
-  }, [dispatch]);
+    dispatch(resetSelectedTag());
+  }, []);
 
   // 카테고리 태그 선택 시 필터링된 포스트를 가져온다
   useEffect(() => {
+
     if (selectedTag && selectedTag !== '# 전체') {
       dispatch(fetchCategoryPost(selectedTag));
+      
+    } else {
+      dispatch(fetchAllPosts());
     }
-  }, [dispatch, selectedTag]);
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchHitPost());
+  }, [dispatch]);
+console.log('max',Maxview);
+
+// // 가장 높은 조회수 찾아서 반환하기... 포기 ~ _ ~
+// useEffect(() => {
+//   const findMaxView = () => {
+//     if (allPosts.length === 0) return undefined;
+
+//     const view = allPosts.map(post => post.board_view);
+//     const maxView = Math.max(...view);
+//     const maxPost = allPosts.find(post => post.board_view === maxView);
+//     console.log(maxPost, maxView);
+//     return {maxPost, maxView};
+    
+//   }
+//   findMaxView();
+// }, []);
+  
 
   const titleOnChange = (e) => setTitle(e.target.value);
   const contentOnChange = (e) => setContent(e.target.value);
@@ -48,6 +73,9 @@ const Community = () => {
       // 응답 상태를 확인
       if (resPost.status !== 200) {
         console.log('Response not ok:', resPost);
+        setOpenModal(false);
+        alert('성공적으로 포스팅했습니다.');
+        dispatch(resetSelectedTag());
       }
       // 성공적으로 포스트를 등록한 후, 전체 포스트를 다시 가져올 수 있습니다.
       // dispatch(fetchAllPosts());
@@ -64,17 +92,42 @@ const Community = () => {
   const closeModal = () => {
     setOpenModal(false);
   };
+// 딕셔너리 형태로 각 숫자번호매핑
+  const tagToId = {
+    '# 면접후기': 1,
+    '# 퇴사후기': 2,
+    '# 취준일상': 3,
+    '# 진로상담': 4,
+  };
 
   const handleTag = (tag) => {
     dispatch(setSelectedTag(tag)); // 선택한 태그 업데이트
+    
+    const tagId = tagToId[tag];
+    if (tagId) {
+      dispatch(fetchCategoryPost(tagId));
+    }
+    // console.log(tagId);
   };
 
   const postList = selectedTag === '# 전체' ? allPosts : categoryData; // 카테고리별 포스트 또는 전체 포스트
 
+  // console.log(postList);
+ 
+
+   
   return (
     <div className='community'>
-      <div className='popular-feed'>가장 많은 조회수 영역. 보여줄려면 조회수가 있어야함</div>
+      <div className='popular-feed'>
+        <span>실시간 인기글</span>
+        <div className='popular-feed-data'>
+        <h2>{Maxview.board_title}</h2>
+       <span>{Maxview.board_content}</span>
+       <span>조회수 {Maxview.board_view}</span>
+        </div>
+      </div>
       <div className='category-section'>
+      <span className={`category-tag ${selectedTag === '# 전체' ? 'selected' : ''}`} onClick={() => handleTag('# 전체')}># 전체</span>
         <span className={`category-tag ${selectedTag === '# 면접후기' ? 'selected' : ''}`} onClick={() => handleTag('# 면접후기')}># 면접후기</span>
         <span className={`category-tag ${selectedTag === '# 퇴사후기' ? 'selected' : ''}`} onClick={() => handleTag('# 퇴사후기')}># 퇴사후기</span>
         <span className={`category-tag ${selectedTag === '# 취준일상' ? 'selected' : ''}`} onClick={() => handleTag('# 취준일상')}># 취준일상</span>
@@ -101,10 +154,10 @@ const Community = () => {
               onChange={categoryOnChange}
             >
               <option value="" disabled hidden>카테고리 선택</option>
-              <option value="면접후기">면접후기</option>
-              <option value="퇴사후기">퇴사후기</option>
-              <option value="취준일상">취준일상</option>
-              <option value="진로상담">진로상담</option>
+              <option value={1}>면접후기</option>
+              <option value={2}>퇴사후기</option>
+              <option value={3}>취준일상</option>
+              <option value={4}>진로상담</option>
             </select>
             <div className='post-section'>
               <textarea
@@ -121,7 +174,6 @@ const Community = () => {
       <table className='commu-header'>
         <thead>
           <tr>
-            <th className='th-num'>번호</th>
             <th className='th-title'>제목</th>
             <th className='th-user'>작성자</th>
             <th className='th-date'>작성일</th>
@@ -129,20 +181,24 @@ const Community = () => {
           </tr>
         </thead>
         </table>
-       
-          {postList.map((post) => (
-            <table key={post.post_id} className='post-list'>
-               <tbody>
-               <Link to={`/Community/${post.board_id}`}>
-                <td className='td-num'>{post.board_id}</td>
-                <td className='td-title'>{post.board_title}</td>
-                <td className='td-user'>{post.user_email}</td>
-                <td className='td-date'>{post.board_date}</td>
-                <td className='td-hits'>{post.board_view}</td>
-              </Link>
-              </tbody>
-            </table>
-          ))}
+        {Array.isArray(postList) && postList.length > 0 ? (
+  postList.map((post, index) => (
+    <table key={index} className='post-list'>
+      <tbody>
+      
+          <Link to={`/Community/${post.board_id}`}>
+            <td className='td-title'>{post.board_title}</td>
+            <td className='td-user'>{post.user_email}</td>
+            <td className='td-date'>{post.board_date.slice(0, 10)}</td>
+            <td className='td-hits'>{post.board_view}</td>
+          </Link>
+        
+      </tbody>
+    </table>
+  ))
+) : (
+  <p>Loading...</p> // 데이터가 없을 때 보여줄 부분
+)}
     </div>
   );
 };

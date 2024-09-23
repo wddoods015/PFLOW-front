@@ -1,6 +1,6 @@
 // src/resume/Resume4.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Resume4.css";
 import ProgressBar from "../components/ProgressBar";
@@ -9,11 +9,14 @@ import ProgressBar from "../components/ProgressBar";
 
 const Resume4 = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const data = location.state;
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState('');
   const [intro, setIntro] = useState('');
 
+  console.log(JSON.stringify(data, null, 2))
 
 // onCnahge 핸들러 
 
@@ -45,7 +48,12 @@ const handlePost = async () => {
 
   try {
     const response = await axios.post('http://localhost:5000/api/resumes',
+      // {state: {...data}, title , intro, image}
       {
+        skills: data.skill,
+        education: data.eudInfo.univ,
+        tranning: data.eudInfo.tranning,
+        career: data.careerInfo,
         image: image,
         title: title,
         intro: intro
@@ -55,9 +63,10 @@ const handlePost = async () => {
           'Content-Type': 'application/json'
         }
       });
-      console.log(title, intro);
+      console.log(title, intro, image);
       console.log('respones ok:',response);
       navigate('/resume/Resume5');
+
   } catch (error) {
     console.log(title, intro);
     console.error('자기소개 전송오류:', error);
@@ -75,9 +84,12 @@ const handlePost = async () => {
       <h2>사용자님의 소개글을 작성해주세요!</h2>
       <p className="resume-guide">본인 업무경험을 기반으로 3~5줄로 요약하여 자기소개를 작성해주세요.</p>
       <div className="intro-section">
-        <div>
+      <div className="img-section">
+          <label htmlFor="file-upload" className={`img-label ${preview ? 'hidden' : ''}`}
+      >+</label>
           <input
           className="input-image"
+          id="file-upload"
           type="file"
           name="image"
           accept="image/*"
@@ -86,7 +98,6 @@ const handlePost = async () => {
           {preview && (
              <img src={preview} alt="미리보기" style={{ width: '60px', height: 'auto' }} />
           )}
-         
         </div>
         <div className="title-section">
         <input 

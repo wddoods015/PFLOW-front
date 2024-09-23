@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useReactToPrint } from "react-to-print";
 //import { useTheme } from '../context/ThemeContext'; // useTheme 훅을 사용
 import ProgressBar from "../components/ProgressBar";
-import "./Resume1.css";
+import "./Resume5.css";
 
 const Resume5 = () => {
 
@@ -16,21 +16,25 @@ const Resume5 = () => {
     onAfterPrint: () => alert("파일이 다운로드 되었습니다.")// 취소했는데도 왜 뜨지..? 
   });
 
+  
+
   return (
     <div className="container">
       <h2>이력서 테마를 선택하고 출력해보세요 : )</h2>
       <div className='progress-div'>
       <ProgressBar/>
-      </div>
-      <div className="resume-5" >
-                <button>Home으로</button>
-                <button className="Export-btn" onClick={handlePrint}>EXPORT</button>
-                <div className='color-btn'>
+      <div className='btn-section'>
+               
+                <button className="Export-btn" onClick={handlePrint}>DOWNLOAD</button>
                   <button>yellow</button>
                   <button>blue</button>
                   <button>green</button>
                 </div>
-                <div className='result'>
+      </div>
+      
+      <div className="result-section" >
+               
+                <div className='resume'>
             <div className="export" ref={componentRef}>
             <h2>신입 머신러닝 개발자 홍길동입니다.</h2>
                 <div className="section-1">
@@ -221,6 +225,8 @@ const Resume5 = () => {
            </dd>
            </div>
            </div>
+           <span>save</span>
+           <span>Home으로</span>
          </div>
             </div>
   );

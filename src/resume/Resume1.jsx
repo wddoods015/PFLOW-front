@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { json, useNavigate } from "react-router-dom";
 import "./Resume1.css";
 import ProgressBar from "../components/ProgressBar";
 
@@ -37,16 +36,17 @@ const Resume1 = () => {
 
  const handlePost = async () => {
   try {
-    const response = await axios.post('http://localhost:5000/api/resumes', 
-      skills, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+    // const response = await axios.post('http://localhost:5000/api/resumes', 
+    //   skills, {
+    //     withCredentials: true,
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   });
 
-      console.log('respones ok:',response);
-      navigate('/resume/Resume2');
+      console.log('respones ok:',);
+      navigate('/resume/Resume2', {state: {skill: skills}});
+      
 
 
   } catch (error) {

@@ -1,11 +1,12 @@
 // src/resume/Resume2.js
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Resume2.css";
 import ProgressBar from "../components/ProgressBar";
 
 const Resume2 = () => {
+  const location = useLocation();
+  const data = location.state;
   const navigate = useNavigate();
   const [eudInfo, setEudInfo] = useState({
     univ: {
@@ -21,6 +22,7 @@ const Resume2 = () => {
       edate: ''
     }
   });
+  console.log(JSON.stringify(data, null, 2))
 
   // handleChange 함수 정의
   const handleChange = (e) => {
@@ -39,16 +41,16 @@ const Resume2 = () => {
 
   const handlePost = async () => {
     try{
-      const response = await axios.post('http://localhost:5000/api/resumes',
-        eudInfo, {
-          withCredentials: true,
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+      // const response = await axios.post('http://localhost:5000/api/resumes',
+      //   eudInfo, {
+      //     withCredentials: true,
+      //     headers: {
+      //       'Content-Type': 'application/json'
+      //     }
+      //   });
 
-        console.log('respones ok:',response);
-      navigate('/resume/Resume3');
+      console.log('respones ok:',);
+      navigate('/resume/Resume3',{state: {...data, eudInfo }});
 
     } catch (error) {
       console.error('학력정보 전송오류:', error);
@@ -88,7 +90,7 @@ const Resume2 = () => {
           <div className="univ-period">
             <input
               className="input-period"
-              type="text"
+              type="date"
               name="gdate"
               data-section="univ"
               placeholder="졸업일 ex) yyyy.mm"
@@ -103,8 +105,10 @@ const Resume2 = () => {
               onChange={handleChange}
             >
               <option value="" disabled hidden>졸업 여부</option>
-              <option value="졸업">수료</option>
-              <option value="미수료">미수료</option>
+              <option value= {1} >졸업</option>
+              <option value= {2}>재학</option>
+              <option value= {3} >휴학</option>
+              <option value= {4}>중퇴</option>
             </select>
           </div>
         </div>
@@ -123,7 +127,7 @@ const Resume2 = () => {
             <div className="academic-period">
               <input
                 className="input-s-date"
-                type="text"
+                type="date"
                 name="sdate"
                 data-section="tranning"
                 placeholder="시작일 ex) yyyy.mm"
@@ -132,7 +136,7 @@ const Resume2 = () => {
               />/
               <input
                 className="input-e-date"
-                type="text"
+                type="date"
                 name="edate"
                 data-section="tranning"
                 placeholder="종료일 ex) yyyy.mm"

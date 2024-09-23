@@ -1,6 +1,3 @@
-
-/* 최상위 */
-
 .container {
   margin-top: 130px; /* 필요한 경우 여백 유지 */
   width: 100%;
@@ -9,27 +6,19 @@
   align-items: center; /* 세로축 가운데 정렬 */
   flex-direction: column; /* 자식 요소를 수직으로 정렬 */
 }
-
-
 .progress-div {
     width: 60%;
 }
-
-
-
 /*-----resume4---------------------------------------------------------------------*/
-
 .form {
   background-color: #fff;
   padding: 20px;
-  border-top: solid 1px #333; 
+  border-top: solid 1px #333;
   width: 60%;
   height: auto;
   display: flex;
   flex-direction: column;
-  
 }
-
 .intro-section {
   width: 100%;
   height: 500px;
@@ -37,21 +26,37 @@
   display: flex;
   flex-direction: column;
 }
-
+.img-section {
+  padding-left: 20px;
+  width: 100%;
+  height: 80px;
+}
 .title-section {
   width: 100%;
   height: 80px;
- 
 }
-
 .textarea-section {
   width: 100%;
-
 }
-
-
 /*-------input css----------------------------------------------------*/
-
+.input-image {
+  display: none;
+}
+.img-label {
+  display: inline-block;
+  padding: 20px 25px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: 1px solid #007BFF;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+/* preview가 있을 때 label 숨기기 */
+.hidden {
+  display: none;
+}
 .input-title {
   margin: 20px;
   padding: 20px;
@@ -59,7 +64,6 @@
   background-color:aliceblue;
   border: none;
 }
-
 .input-intro {
   margin: 20px;
   padding: 20px;

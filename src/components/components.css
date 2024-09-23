@@ -28,7 +28,7 @@
   
   .progress {
     height: 20px; /* 고정 높이 */
-    background-color: blue; /* 진행 상태 색상 */
+    background-color: #0554f2; /* 진행 상태 색상 */
     border-radius: 13px; /* 둥근 모서리 */
     transition: width 0.3s; /* 진행 애니메이션 */
   }
@@ -62,4 +62,19 @@
     text-decoration: none;
     font-size: 0.8rem;
   }
+
+  .side-links a:hover {
+    color:#0554f2;
+    font-weight: bolder;
+  }
   
+.log-out-btn {
+  border: none;
+  color: #333;
+  background-color: white;
+}
+
+.log-out-btn:hover {
+  color:#0554f2;
+  font-weight: bolder;
+} 
