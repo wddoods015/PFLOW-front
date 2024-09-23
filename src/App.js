@@ -53,6 +53,7 @@ function App() {
             <Route path="/Chatbot" element={<Chatbot />} />
             <Route path="/Mypage" element={<Mypage />} />
             <Route path="/Mypage/Myactive" element={<Myactive />} />
+            <Route path="/Mypage/MyResume" element={<MyResume />} />
             <Route path="/Community" element={<Community />} />
             <Route path="/Community/:board_id" element={<Post />} />
           </Routes>
