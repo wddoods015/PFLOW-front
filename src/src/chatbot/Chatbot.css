@@ -1,0 +1,187 @@
+
+  /* chatbot 최상위 영역 */
+  .chatbot {
+    position: fixed; /* 브라우저 상단에 고정 */
+    top: 0px;
+    background: #d9d9d9;
+    border: solid 2px white;
+    z-index: 999;
+    overflow: hidden;
+    margin-top: 130px; /* 필요한 경우 여백 유지 */
+    width: 100%;
+    height: auto; /* 부모 요소의 높이를 화면 크기에 맞게 설정 */
+    display: flex;
+    align-items: center; /* 세로축 가운데 정렬 */
+    flex-direction: column; /* 자식 요소를 수직으로 정렬 */
+  }
+
+  
+ 
+
+  /* 메세지 영역 */
+  /* .message-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 1047px;
+    height: 100%;
+    margin: 0px 0 0 436px;
+    background: #ffffff;
+    z-index: 27;
+    overflow: hidden;
+  } */
+  /* 과거의 css */
+  /* .top-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: relative;
+    min-width: 0;
+    z-index: 28;
+  }
+  .divider {
+    flex-shrink: 0;
+    position: relative;
+    width: 640px;
+    height: 1px;
+    background: #000000;
+    opacity: 0.08;
+    z-index: 29;
+  }
+  .message-box {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 24px;
+    position: relative;
+    min-width: 0;
+    width: 90%;
+    padding: 24px 0px 24px 64px;
+    z-index: 30;
+  }
+ 
+  .frame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    position: relative;
+    width: 90%;
+    height: 48px;
+    padding: 10px 20px 10px 20px;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    z-index: 33;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .frame-input {
+    padding: 0 20px 0 20px;
+    flex-shrink: 0;
+    position: absolute;
+    width: 90%;
+    height: 48px;
+    top: -2px;
+    left: -2px;
+    background: transparent;
+    border: none;
+    z-index: 37;
+    outline: none;
+  } */
+ 
+ /*-------위키독스-------------*/
+
+ .chat-box {
+  width: 60%;
+  min-width: 880px;
+  height: 800px;
+  background: #fff;
+  box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.13);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-list {
+  padding: 20px;
+  height: 100%;
+  flex-grow: 1;
+  overflow-y: auto;  
+}
+
+
+.messages-list::-webkit-scrollbar{
+  display: none;
+}
+
+.user-message,
+.ai-message {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user-message {
+  width: 400px;
+  margin-left: 70%;
+  align-self: flex-end;
+  background: #2979ff;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 16px 16px 0 16px;
+}
+
+.ai-message {
+  width: 400px;
+  align-self: flex-start;
+  background: #f0f0f0;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 16px 16px 16px 0;
+}
+
+.message-form {
+  border-top: 1px solid #f0f0f0;
+  height: 100px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.message-input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  margin-right: 30px;
+  margin-left: 20px;
+  height: 45px;
+}
+
+.send-button {
+   margin-right: 80px;
+  height: 42px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #2979ff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chatbot-headline {
+  text-align: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin: 0;
+}
