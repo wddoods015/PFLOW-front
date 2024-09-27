@@ -23,8 +23,7 @@
 .recommend-div {
   margin-top: 20px;
   width: 40%;
-  height: 80%;
-  min-width: 500px;
+  min-width: 460px;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -32,6 +31,13 @@
 
 .recommend-p {
   font-size: 9pt;
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.recommend-p:hover {
+  background-color: aliceblue;
+  transform: translateY(-5px); 
 }
 
 .recommend-ul {
@@ -69,6 +75,9 @@
   background-color: #fff;
   margin-left: 40px;
 }
+.recommend-input:hover {
+  border: solid 2px #007BFF;
+}
 
 .recommend-btn {
   width: 100px;
@@ -78,6 +87,10 @@
   color: #007BFF;
   border: solid 1px #007BFF;
   background-color: white;
+}
+
+.recommend-btn:hover {
+  border: solid 2px #007BFF;
 }
 
 /*----이력서 작성 영역------*/
@@ -96,10 +109,7 @@
   display: flex;
   flex-direction: column;
 }
-.img-section {
- 
-  width: 100%;
-}
+
 .title-section {
   width: 100%;
   height: 80px;
@@ -114,12 +124,11 @@
 }
 .img-label {
   display: inline-block;
-  padding: 25px 25px;
+  padding: 25px 15px;
   font-size: 12pt;
   font-weight: bold;
   color: #007BFF;
-  background-color: #f0f8ff;
-  border: 1px solid #f0f8ff;
+  background-color: white;
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
@@ -130,9 +139,6 @@
   color: white;
 }
 
-/* .preview-img {
- 
-} */
 
 /* preview가 있을 때 label 숨기기 */
 .hidden {

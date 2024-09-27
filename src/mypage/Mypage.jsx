@@ -87,7 +87,7 @@ const Mypage = () => {
                 <div className='userinfo-update'>
                 <label>
             이름
-        <input className='name-input'
+        <input className='u-name-input'
         type="text"
         name='name'
         placeholder={user.info_name}
@@ -97,7 +97,7 @@ const Mypage = () => {
         </label>
         <select
         onChange={handleChange}
-        className='gender-input'
+        className='u-gender-input'
         name='gender'
        // placeholder={user.info_gender}
       >
@@ -108,7 +108,7 @@ const Mypage = () => {
       <label>
             생년월일
             <input
-        className='name-input'
+        className='u-bday-input'
         type="date"
         name='birthDate'
         placeholder={user.info_birth}
@@ -119,7 +119,7 @@ const Mypage = () => {
         <label>
     휴대폰 번호
       <input
-        className='name-input'
+        className='u-phone-input'
         type="tel"
         name='phone'
         placeholder={user.info_phone_number}
@@ -130,7 +130,7 @@ const Mypage = () => {
       <label>
     주소
     <input
-        className='name-input'
+        className='u-address-input'
         type="text"
         name='address1'
         placeholder={user.info_address}
@@ -141,7 +141,7 @@ const Mypage = () => {
 <label>
         상세주소
         <input
-        className='name-input'
+        className='u-detail-input'
         type="text"
        placeholder={user.info_detail}
        name='address2'
@@ -150,17 +150,9 @@ const Mypage = () => {
       />
      </label>
      <label>
-        포트폴리오url
-        <input
-        className='name-input'
-        type="text"
-        placeholder="url 입력"
-      />
-     </label>
-     <label>
         비밀번호 인증
         <input
-        className='name-input'
+        className='chk-password-input'
         type="password"
         name='password'
         placeholder="비밀번호 입력"

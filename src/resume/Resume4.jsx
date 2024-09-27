@@ -55,7 +55,7 @@ const Resume4 = () => {
     try {
       const response = await axios.post('http://localhost:5001/api/get-recommendations', {
         skills: data.skill, 
-        preferJob: preJob,
+        // preferJob: preJob,
       });
       console.log('post 성공받은데이터',response);
       if (response.data) {
@@ -101,7 +101,7 @@ const Resume4 = () => {
       </div>
       <div className="resume-4">
         <div className="recommend-div">
-          <p className="recommend-p"> 💡 희망분야를 입력하고 나의 정보로 문구추천을 받아보세요!</p>
+          <p className="recommend-p"> 💡 자기소개 작성이 어렵다면? 희망분야 입력하고 내 정보로 문구추천 받기!</p>
           <div className="recommend-post-div">
             <input
               className="recommend-input"
@@ -123,7 +123,7 @@ const Resume4 = () => {
           <div className="intro-section">
             <div className="img-section">
               <label htmlFor="file-upload" className={`img-label ${preview ? 'hidden' : ''}`}>
-                사진
+                사진 +
               </label>
               <input
                 className="input-image"

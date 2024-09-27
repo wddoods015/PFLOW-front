@@ -47,7 +47,7 @@ const [loading, setLoading] = useState(true); // 로딩 상태 관리
         
         <div className='ResumeId'>
             <button onClick={moveList}>목록</button>
-          {resumeData ? (<div className='saved-resume'>
+          {resumeData && resumeData.length > 0 ? (<div className='saved-resume'>
                 <h3 className='resume-title'>{resumeData.resume[0].letter_title}</h3>
             <div className="user-info-section">
                     <img src="/image.png" alt="증명사진 아이콘" className="img"/>     

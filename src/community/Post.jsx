@@ -216,10 +216,7 @@ const Post = () => {
                       조회 수: {boardData[0].board_view}
                       </label>
                     </div>
-                    <div className="detail-header-2">
-                 
-                    <button className='movetolist-btn' onClick={moveToList}>↪</button>
-                    </div>
+                    <button className='movetolist-btn' onClick={moveToList}>...</button>
                   </div>
                   <form className='comment' onSubmit={updatePut}>
                   <button type='submit' className='post-modify-btn'>게시물 수정</button>

@@ -80,7 +80,6 @@
 
 /*------------btn--------------------------*/
 
-
 .add-career-btn {
   margin-bottom: 20px;
   width: 100px;
@@ -89,9 +88,18 @@
   color: #0554f2;
 }
 
+.add-career-btn:hover {
+  font-weight: bolder;
+}
+
 .del-career-btn {
+
   margin-top: 45px;
   width: 30px;
   height: 30px;
   border: none;
+}
+
+.del-career-btn:hover {
+  background-color: #ccc;
 }

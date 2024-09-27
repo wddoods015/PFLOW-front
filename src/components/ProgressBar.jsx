@@ -51,7 +51,7 @@ const ProgressBar = () => {
           <span className="Text5" style={{
     color: location.pathname === '/resume/Resume5' ? 'blue' : 'grey',
     fontSize: location.pathname === '/resume/Resume5' ? '20pt' : '16pt'
-  }}>테마선택</span>
+  }}>다운로드</span>
         </li>
       </ul>
       <div className="progress-bar-container">

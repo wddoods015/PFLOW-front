@@ -121,7 +121,14 @@
       border: none;
       z-index: 44;
       border-radius: 6px;
+      transition: transform 0.2s;
     }
+
+    .main-btn-section:hover{
+      transform: translateY(-5px); 
+    }
+    
+
     .main-btn {
       flex-shrink: 0;
       flex-basis: auto;
@@ -172,7 +179,12 @@
     border: none;
     z-index: 44;
     border-radius: 6px;
+    transition: transform 0.2s;
   }
+
+.main-btn-section:hover {
+  transform: translateY(-5px); 
+}
   .main-btn {
     flex-shrink: 0;
     flex-basis: auto;
@@ -187,6 +199,7 @@
     white-space: nowrap;
     letter-spacing: -0.36px;
     z-index: 83;
+    transition: transform 0.2s;
   }
 
   .footer {
@@ -438,7 +451,7 @@
     flex-direction: column; /* 자식 요소를 수직으로 배치 */
     align-items: center; /* 자식 요소를 수평 중앙에 배치 */
     justify-content: center; /* 자식 요소 간의 수직 간격 조정 */
-    gap: 100px; /* 자식 요소들 간의 간격 */
+    gap: 60px; /* 자식 요소들 간의 간격 */
     position: relative;
     width: 100%;
     height: 90%;
@@ -453,12 +466,14 @@
     margin-bottom: 100px;
   }
   .main-2 {
-    background: #e0e0e0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: aliceblue;
     display: flex;
     justify-content: center; /* 수평 중앙 정렬 */
     align-items: center;     /* 수직 중앙 정렬 */
     width: 100%;
-    height: 30%;
+    height: 35%;
     margin-bottom: 100px;
   }
 /* 마지막 섹션에서는 마진값없이 */
@@ -471,7 +486,8 @@
   }
 /* 제목과 부제목 버튼을 감싼 영역*/
   .content {
-   bottom: 20px;
+    height: 35%;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;

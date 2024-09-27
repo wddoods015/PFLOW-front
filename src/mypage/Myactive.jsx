@@ -134,7 +134,7 @@ const Myactive = () => {
             <div className="myactive-saction">
             <h1>나의 활동</h1>
            <div className='select-tag'>
-           <button value='나의댓글' onClick={tagClick} className='myactive-category-btn'>내가쓴 댓글</button> / <button value='나의게시물' onClick={tagClick} className='myactive-category-btn'>내가 쓴 게시물</button>
+           <button value='나의댓글' onClick={tagClick} className='myactive-category-btn'>나의 댓글</button> / <button value='나의게시물' onClick={tagClick} className='myactive-category-btn'>나의 게시물</button>
            </div>
 
            {MyactiveTag === '나의게시물' ? <table className="myactive-tb">
