@@ -44,10 +44,16 @@ const Resume1 = () => {
     //     }
     //   });
 
-      console.log('respones ok:',);
-      navigate('/resume/Resume2', {state: {skill: skills}});
-      
+     
+    if (skills.length === 0) {
+      alert('보유하신 기술정보를 하나 이상 입력해주세요.');
 
+    } else {
+      console.log('response ok:');
+      navigate('/resume/Resume2', { state: { skill: skills } });
+
+      
+    }
 
   } catch (error) {
     console.error('기술정보 전송오류:', error);

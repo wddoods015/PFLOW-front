@@ -8,10 +8,13 @@
 }
 .progress-div {
     width: 60%;
+    display: flex;
+    align-items: center; /* 세로축 가운데 정렬 */
+    flex-direction: column; /* 자식 요소를 수직으로 정렬 */
 }
 /*-----resume4---------------------------------------------------------------------*/
 
-.result-section {
+.final-step {
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -21,24 +24,56 @@
   flex-direction: column;
 }
 
-/*---------completed resume-----------------------------------*/
-.resume {
-  width: 60%;
-  border-top: solid 1px  #333;
-  border-bottom: solid 1px  #333;
-  margin-bottom: 40px;
-  padding-top: 40px;
-  padding-bottom: 60px;
+.result-section {
+  border-top: solid 2px #ccc;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 가운데 정렬 */
 }
+
+/*---------completed resume-----------------------------------*/
+
+
+.resume {
+  min-width: 600px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* 수직 가운데 정렬 */
+}
+
+
 
 /*------btn section-----------------------------------------------------------*/
 
 .btn-section {
- 
-
+  margin-top: 100px;
+  gap: 30px;
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  align-items: right; /* 수직 가운데 정렬 */
 }
 
-.resume-table {
-  border: solid 2px #333;
-  width: 80%;
+.download-btn {
+  font-size: 12pt;
+  border: solid 1PX #0554F2;
+  width: 100px;
+  height: 30px;
+  color: #0554F2;
+  background-color: #fff;
 }
+
+.gotohome-btn {
+  font-size: 12pt;
+  border: none;
+  width: 100px;
+  height: 30px;
+  color: #333;
+  background-color: #fff;
+}
+
+.img {
+  margin-right: 20px;
+} 

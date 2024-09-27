@@ -49,8 +49,14 @@ const Resume2 = () => {
       //     }
       //   });
 
-      console.log('respones ok:',);
-      navigate('/resume/Resume3',{state: {...data, eudInfo }});
+      if (eudInfo.univ.name === '' ) {
+          alert('학력정보는 필수사항입니다.')
+      } else {
+        console.log('respones ok:',);
+        navigate('/resume/Resume3',{state: {...data, eudInfo }});
+      }
+
+      
 
     } catch (error) {
       console.error('학력정보 전송오류:', error);

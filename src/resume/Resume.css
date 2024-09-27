@@ -1,15 +1,10 @@
-.resume-1 {
-  padding: 30px;
-  border: 1px solid #000000;
-  width: 90%;
-  transform: scale(0.8); /* 전체 컨테이너를 0.8배로 축소 */
-  }
+
 
 .section-1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+ 
 }
 
 .resume-table {
@@ -31,6 +26,4 @@ height: 60px;
   border-bottom: 1px solid #839dd4;
 }
 
-.stack {
-  width: 30%;
-}
+/*-----------------------------------------------------*/

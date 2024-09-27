@@ -7,7 +7,7 @@
   
   /* 웹 최상위 태그 overflow: hidden;  */
   .main-container {
-    overflow: show;
+    overflow: hidden;
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
@@ -156,6 +156,7 @@
     text-align: center;
   }
 
+ 
   .main-btn-section {
     display: flex;
     align-items: center;
@@ -500,6 +501,10 @@
       no-repeat center;
     background-size: 100% 100%;
     z-index: 47;
+  }
+
+  .main-btn-link {
+    text-decoration-line: none;
   }
 
 /*------------------------- footer css 하단 고정--------------------------------------*/

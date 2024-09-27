@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './main.css';
 
 function Company() {
@@ -11,12 +12,15 @@ function Company() {
                 이력서 쓰는데 시간 버리지 말자! 글을 못써도! 단어가 생각이 안나도! <br/> AI로 발견하는 나만의 취업 강점 찾기!
                 <br />
               </span>
+              <Link to='/resume/Resume1' className='main-btn-link'>
             <button className='main-btn-section'>
-              <span className='main-btn'>Get Started Free</span>
+              <span className='main-btn'>
+                Get Started Free</span>
               <div className='icon'>
                 <div className='icon-arrow' />
               </div>
             </button>
+            </Link>
             </div>
           </div>
         <div className='main-2'>
@@ -26,12 +30,14 @@ function Company() {
                 입력한 정보를 바탕으로 챗봇에서 원하는 회사 검색! <br/> 검색하기 귀찮다면 챗봇에게 추천 받기!
                 <br />
               </span>
+              <Link to='/Chatbot' className='main-btn-link'>
             <button className='main-btn-section'>
               <span className='main-btn'>Get Started Free</span>
               <div className='icon'>
                 <div className='icon-arrow' />
               </div>
-            </button>   
+            </button>
+            </Link>   
         </div>
         </div>
         <div className='main-3'>
@@ -41,12 +47,14 @@ function Company() {
                 취업고민 상담부터 후기까지 <br/> 모두의 소식을 함께 나눠봐요
                 <br />
               </span>
+              <Link to='/Community' className='main-btn-link'>
             <button className='main-btn-section'>
               <span className='main-btn'>Get Started Free</span>
               <div className='icon'>
                 <div className='icon-arrow' />
               </div>
             </button>
+             </Link>
             </div>
           </div>
         </div>

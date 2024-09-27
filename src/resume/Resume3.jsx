@@ -86,7 +86,7 @@ const handleChange = (e, id) => {
       <div className="progress-div">
         <ProgressBar />
       </div>
-      <form className="form">
+      <form className="form-3">
         <h2 className="h2">사용자님의 경력을 입력해주세요!</h2>
         <button className="add-career-btn" type="button" onClick={addCareer}>
           + 추가
@@ -151,6 +151,7 @@ const handleChange = (e, id) => {
       <button className="next-btn" type="button" onClick={handlePost}>
   save
 </button>
+<div className="margin-box"></div>
     </div>
   );
 };

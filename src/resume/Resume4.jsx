@@ -1,124 +1,166 @@
-// src/resume/Resume4.js
 import React, { useState } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Resume4.css";
 import ProgressBar from "../components/ProgressBar";
-
-
 
 const Resume4 = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const data = location.state;
+
+  // 희망취업분야 입력값을 받을 상태
+  const [preJob, setPreJob] = useState('');
+  // 추천받은 데이터 받을 상태
+  const [recommendations, setRecommendations] = useState([]);
   const [image, setImage] = useState(null);
   const [preview, setPreview] = useState(null);
   const [title, setTitle] = useState('');
   const [intro, setIntro] = useState('');
 
-  console.log(JSON.stringify(data, null, 2))
+  console.log(JSON.stringify(data, null, 2));
 
-// onCnahge 핸들러 
+  // onChange 이미지 핸들러
+  const imgOnChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
 
-const imgOnChange = (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    setImage(file);
+      // 파일 미리보기 설정
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result); // 미리보기 URL을 상태에 저장
+      };
+      reader.readAsDataURL(file); // 파일을 Data URL로 읽기
+    }
+  };
 
-    // 파일 미리보기 설정
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreview(reader.result); // 미리보기 URL을 상태에 저장
-    };
-    reader.readAsDataURL(file); // 파일을 Data URL로 읽기
-  }
-};
+  // onChange 제목 핸들러
   const titleOnChange = (e) => {
     setTitle(e.target.value);
   };
 
+  // onChange 자기소개 핸들러
   const introOnChange = (e) => {
     setIntro(e.target.value);
   };
 
+  // onChange 희망직무 핸들러
+  const preferOnChange = (e) => {
+    setPreJob(e.target.value);
+  };
 
-// post 요청
-
-const handlePost = async () => {
-
-  try {
-    const response = await axios.post('http://localhost:5000/api/resumes',
-      // {state: {...data}, title , intro, image}
-      {
-        skills: data.skill,
-        education: data.eudInfo.univ,
-        tranning: data.eudInfo.tranning,
-        career: data.careerInfo,
-        image: image,
-        title: title,
-        intro: intro
-      }, {
-        withCredentials: true,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+  // 문구 추천을 위한 post 요청
+  const fetchRecommendations = async () => {
+    try {
+      const response = await axios.post('http://localhost:5001/api/get-recommendations', {
+        skills: data.skill, 
+        preferJob: preJob,
       });
-      console.log(title, intro, image);
-      console.log('respones ok:',response);
-      navigate('/resume/Resume5');
+      console.log('post 성공받은데이터',response);
+      if (response.data) {
+        setRecommendations(response.data.recommendations); // 추천 결과를 상태에 저장
+      }
+    } catch (error) {
+      console.error("자기소개 추천 오류:", error);
+    }
+  };
 
-  } catch (error) {
-    console.log(title, intro);
-    console.error('자기소개 전송오류:', error);
-  }
-};
+  // 서버로 데이터 전송을 위한 post 요청
+  const handlePost = async (file) => {
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('skills', JSON.stringify(data.skill));
+    formData.append('education', JSON.stringify(data.eudInfo.univ));
+    formData.append('tranning', JSON.stringify(data.eudInfo.tranning));
+    formData.append('career', JSON.stringify(data.careerInfo));
+    formData.append('title', title);
+    formData.append('intro', intro);
 
-  
+    try {
+      const response = await axios.post('http://localhost:5000/api/resumes',
+        formData,
+        {
+          withCredentials: true,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          }
+        }
+      );
+      console.log('response ok:', response);
+      navigate('/resume/Resume5', { state: { ...data, image, preview, title, intro, preJob } });
+    } catch (error) {
+      console.error('자기소개 전송 오류:', error);
+    }
+  };
 
   return (
     <div className="container">
-   <div className='progress-div'>
-      <ProgressBar/>
+      <div className="progress-div">
+        <ProgressBar />
       </div>
-      <form className="form">
-      <h2>사용자님의 소개글을 작성해주세요!</h2>
-      <p className="resume-guide">본인 업무경험을 기반으로 3~5줄로 요약하여 자기소개를 작성해주세요.</p>
-      <div className="intro-section">
-      <div className="img-section">
-          <label htmlFor="file-upload" className={`img-label ${preview ? 'hidden' : ''}`}
-      >+</label>
-          <input
-          className="input-image"
-          id="file-upload"
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={imgOnChange}
-          />
-          {preview && (
-             <img src={preview} alt="미리보기" style={{ width: '60px', height: 'auto' }} />
-          )}
+      <div className="resume-4">
+        <div className="recommend-div">
+          <p className="recommend-p"> 💡 희망분야를 입력하고 나의 정보로 문구추천을 받아보세요!</p>
+          <div className="recommend-post-div">
+            <input
+              className="recommend-input"
+              placeholder="ex) ai 개발자"
+              onChange={preferOnChange}
+            />
+            <button className="recommend-btn" onClick={fetchRecommendations}>문구추천받기</button>
+          </div>
+          <ul className="recommend-ul">
+            {recommendations.map((recommendation, index) => (
+              <li key={index} className="recommend-li">
+                <p>{recommendation}</p>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="title-section">
-        <input 
-        className="input-title"
-        placeholder="사용자님을 한줄로 소개할 제목을 작성해주세요."
-        value={title}
-        onChange={titleOnChange}
-        />
-        </div>
-        <div className="textarea-section">
-        <textarea
-        maxlength="400"
-        className="input-intro"
-        placeholder="사용자님의 자기소개글을 작성해주세요."
-        value={intro}
-        onChange={introOnChange}
-        />
-        </div>
+
+        <form className="form-4">
+          <div className="intro-section">
+            <div className="img-section">
+              <label htmlFor="file-upload" className={`img-label ${preview ? 'hidden' : ''}`}>
+                사진
+              </label>
+              <input
+                className="input-image"
+                id="file-upload"
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={imgOnChange}
+              />
+              {preview && (
+                <img className="preview-img" src={preview} alt="미리보기" style={{ width: '60px', height: 'auto' }} />
+              )}
+            </div>
+
+            <div className="title-section">
+              <input
+                className="input-title"
+                placeholder="사용자님을 한줄로 소개할 제목을 작성해주세요."
+                value={title}
+                onChange={titleOnChange}
+              />
+            </div>
+
+            <div className="textarea-section">
+              <textarea
+                maxLength="400"
+                className="input-intro"
+                placeholder="본인 업무경험을 기반으로 3~5줄로 요약하여 자기소개를 작성해주세요."
+                value={intro}
+                onChange={introOnChange}
+              />
+            </div>
+          </div>
+        </form>
       </div>
-           </form>
-           <button className="next-btn"  onClick={handlePost}>save</button>
+
+      <button className="next-btn" onClick={() => handlePost(image)}>save</button>
     </div>
   );
 };

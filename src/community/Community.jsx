@@ -34,7 +34,7 @@ const Community = () => {
   useEffect(() => {
     dispatch(fetchHitPost());
   }, [dispatch]);
-console.log('max',Maxview);
+//console.log('max',Maxview);
 
 // // 가장 높은 조회수 찾아서 반환하기... 포기 ~ _ ~
 // useEffect(() => {
@@ -76,6 +76,9 @@ console.log('max',Maxview);
         setOpenModal(false);
         alert('성공적으로 포스팅했습니다.');
         dispatch(resetSelectedTag());
+        setTitle('');
+        setCategory('');
+        setContent('');
       }
       // 성공적으로 포스트를 등록한 후, 전체 포스트를 다시 가져올 수 있습니다.
       // dispatch(fetchAllPosts());
@@ -118,14 +121,18 @@ console.log('max',Maxview);
    
   return (
     <div className='community'>
-      <div className='popular-feed'>
+       <Link to={`/Community/${Maxview.board_id}`} className='popular-feed-link'>
+      <div >
         <span>실시간 인기글</span>
         <div className='popular-feed-data'>
-        <h2>{Maxview.board_title}</h2>
-       <span>{Maxview.board_content}</span>
-       <span>조회수 {Maxview.board_view}</span>
+        <h3 className='popular-feed-title'> {Maxview.board_title}</h3>
+        <span className='popular-feed-content'>
+  {Maxview.board_content ? Maxview.board_content.slice(0, 40) : ''}...
+</span>
+       <span className='popular-feed-view'>조회수 {Maxview.board_view}</span>
         </div>
       </div>
+      </Link>
       <div className='category-section'>
       <span className={`category-tag ${selectedTag === '# 전체' ? 'selected' : ''}`} onClick={() => handleTag('# 전체')}># 전체</span>
         <span className={`category-tag ${selectedTag === '# 면접후기' ? 'selected' : ''}`} onClick={() => handleTag('# 면접후기')}># 면접후기</span>
@@ -134,8 +141,10 @@ console.log('max',Maxview);
         <span className={`category-tag ${selectedTag === '# 진로상담' ? 'selected' : ''}`} onClick={() => handleTag('# 진로상담')}># 진로상담</span>
       </div>
       <h1>{selectedTag}</h1>
+      <div className='commu-header'>
       <span className='counting-post'>총 {postList.length} 포스트</span>
       <button onClick={handleWrite} className='post-btn'>글쓰기</button>
+      </div>
       {openModal && (
         <div className='modal-post'>
           <form className='post-form' onSubmit={handlePost}>
@@ -171,30 +180,19 @@ console.log('max',Maxview);
           </form>
         </div>
       )}
-      <table className='commu-header'>
-        <thead>
-          <tr>
-            <th className='th-title'>제목</th>
-            <th className='th-user'>작성자</th>
-            <th className='th-date'>작성일</th>
-            <th className='th-hits'>조회수</th>
-          </tr>
-        </thead>
-        </table>
+     
         {Array.isArray(postList) && postList.length > 0 ? (
   postList.map((post, index) => (
-    <table key={index} className='post-list'>
-      <tbody>
-      
-          <Link to={`/Community/${post.board_id}`}>
-            <td className='td-title'>{post.board_title}</td>
-            <td className='td-user'>{post.user_email}</td>
-            <td className='td-date'>{post.board_date.slice(0, 10)}</td>
-            <td className='td-hits'>{post.board_view}</td>
-          </Link>
-        
-      </tbody>
-    </table>
+    <Link to={`/Community/${post.board_id}`} className='feed-link'>
+    <div key={index} className='post-list'>
+      <span className='feed-user'>{post.user_email}</span>
+            <h4 className='feed-title'>{post.board_title}</h4>
+            <div className='feed-footer'>
+            <span className='feed-date'>{post.board_date.slice(0, 10)}</span>
+            <span className='feed-view'>조회수 {post.board_view}</span>
+            </div>
+    </div>
+    </Link> 
   ))
 ) : (
   <p>Loading...</p> // 데이터가 없을 때 보여줄 부분

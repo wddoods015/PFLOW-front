@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Siderbar';
 import './Mypage.css';
 import axios from 'axios';
+
 const Mypage = () => {
     const [user, setUser] = useState(''); // 유저 정보를 null로 초기화
     const [changeInfo, setChangeInfo] = useState({
