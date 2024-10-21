@@ -1,0 +1,67 @@
+
+// slices/AuthSlice.js
+import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const initialState = {
+  isLogin: false,
+};
+
+const AuthSlice = createSlice({
+  name: 'auth',
+  initialState,
+  reducers: {
+    loginSuccess: (state) => {
+      state.isLogin = true;
+    },
+    logout: (state) => {
+      state.isLogin = false;
+    },
+  },
+});
+
+// 비동기 액션
+export const login = (body) => async (dispatch) => {
+  try {
+    const response = await axios.post(
+      'https://pflow.ddns.net/api/auth/sign-in',
+      body,
+      {
+        withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      dispatch(AuthSlice.actions.loginSuccess());
+      console.log('로그인을 성공했습니다.');
+      window.location.replace('/');
+    }
+  } catch (error) {
+    console.error(`로그인 실패: ${error.response?.data?.message || error.message}`);
+    alert('아이디와 비밀번호를 다시 확인해주세요!');
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  try {
+    const response = await axios.post('https://pflow.ddns.net/api/auth/sign-out', {}, {
+      withCredentials: true,
+    });
+
+    if (response.status === 200) {
+      dispatch(AuthSlice.actions.logout());
+      console.log('로그아웃 되었습니다.');
+      alert('로그아웃 되었습니다.');
+      window.location.replace('/');
+    }
+  } catch (error) {
+    console.error('로그아웃 오류', error);
+  }
+};
+
+// 액션과 리듀서 export
+export default AuthSlice.reducer;
+

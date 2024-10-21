@@ -1,0 +1,561 @@
+/*--------------loading animation css ------------------- */
+.loading-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white; /* 배경을 반투명하게 */
+  z-index: 999;
+}
+
+.loading-P {
+    font-size: 28pt;
+    font-weight: bolder;
+    color: #C5DCF9;
+    animation: changeColor 1.5s forwards infinite; 
+    
+}
+
+.loading-F {
+    font-size: 24pt;
+    font-weight: bolder;
+    color: #C5DCF9;
+    animation: changeColor 1.5s forwards infinite; 
+}
+
+.loading-L {
+    font-size: 24pt;
+    font-weight: bolder;
+    color: #C5DCF9;
+    animation: changeColor 1.5s forwards infinite; 
+}
+
+.loading-O {
+    font-size: 24pt;
+    font-weight: bolder;
+    color: #C5DCF9;
+    animation: changeColor 1.5s forwards infinite; 
+}
+
+.loading-W {
+    font-size: 24pt;
+    font-weight: bolder;
+    color: #C5DCF9;
+    animation: changeColor 1.5s forwards infinite; 
+}
+
+.loading-P { animation-delay: 0s; }
+.loading-F { animation-delay: 0.3s; } /* 0.4초 지연 */
+.loading-L { animation-delay: 0.6s; } /* 0.8초 지연 */
+.loading-O { animation-delay: 0.9s; } /* 1.2초 지연 */
+.loading-W { animation-delay: 1.2s; } /* 1.6초 지연 */
+
+@keyframes changeColor {
+    0% {
+      opacity: 1; /* 시작 시 투명 */
+      color: #0554F2; /* 시작 색상 */
+    }
+   
+    100% {
+      opacity: 1; /* 최종적으로 보이게 */
+      color: #C5DCF9; /* 최종 색상 */
+    }
+  }
+/*--------------loading animation css end------------------- */
+
+.Mypage {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 180px;
+  height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(5px);
+  position: relative; /* 레이아웃 영향을 주지 않도록 수정 */
+}
+
+@media (max-width: 1000px) {
+  .Mypage {
+    flex-direction: column; /* 뷰포트가 577px 이하일 때 수직 배치 */
+    gap: 30px; /* 수직 배치 시 간격을 더 좁게 설정할 수 있음 */
+  }
+
+  /* 사이드바가 헤드 쪽으로 위치하게 하려면, 사이드바의 순서를 변경할 수 있음 */
+  .sidebar {
+    order: -1; /* 사이드바를 제일 위로 이동 */
+  }
+}
+
+.my-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 100%;
+    height: auto;
+    margin-left: 40px;
+}
+
+.mypage-active {
+    padding-right: 30px;
+    padding-bottom: 10px;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row; /* 자식 요소들을 수평으로 나란히 배치 */
+}
+
+.mypage-active-a {
+  text-decoration: none;
+  color: #333;
+}
+
+.mypage-active-a:hover {
+  font-weight: bold;
+  color: #0554F2;
+}
+
+.mypage-headline {
+    margin-top: 100px;
+    margin-bottom: 50px;
+    border-bottom: solid 2px #333;
+    width: 50%;
+}
+
+.userinfo-update {
+ width: 60%;
+ gap: 30px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.between-div {
+  width: 350px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.u-name-input {
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+.u-gender-input {
+  margin-top: 20px;
+  border: none;
+  width: 90px;
+  height: 40px;
+}
+
+.u-bday-input {
+  border: none;
+  width: 120px;
+  height: 40px;
+}
+
+.u-phone-input {
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+.u-address-input {
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+.u-detail-input {
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+.chk-password-input {
+  width: 350px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+/*----------Myactive css--------------------------------------------------------------------------*/
+
+.Myactive {
+    display: flex;
+    flex-direction: row; /* 자식 요소들을 수평으로 나란히 배치 */
+    align-items: flex-start; /* 자식 요소들을 부모의 상단에 정렬 */
+    margin-top: 180px;
+    height: 100%;
+    width: 100%; 
+    backdrop-filter: blur(5px);
+}
+
+@media (max-width: 1000px) {
+  .Myactive {
+    flex-direction: column; /* 뷰포트가 577px 이하일 때 수직 배치 */
+    gap: 30px; /* 수직 배치 시 간격을 더 좁게 설정할 수 있음 */
+  }
+
+  /* 사이드바가 헤드 쪽으로 위치하게 하려면, 사이드바의 순서를 변경할 수 있음 */
+  .sidebar {
+    order: -1; /* 사이드바를 제일 위로 이동 */
+  }
+}
+
+.myactive-saction {
+  margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 100%;
+    height: auto;
+}
+
+.myactive-tb {
+    height: auto;
+    padding: 5px;
+    width: 780px; 
+    min-width: 580px;
+    border-collapse: collapse; /* 셀 간의 경계선을 합칩니다 */
+    border-spacing: 0; /* 셀 간의 간격을 없앱니다 */
+}
+
+.header-th {
+  width: 20%;
+}
+
+.myactive-tb th {
+    border-top: 1px solid #000; /* 검은색 실선 테두리 */ 
+    padding: 15px;
+}
+
+.myactive-tb td {
+    border-top: 1px solid #ccc; /* 검은색 실선 테두리 */
+    text-align: center;
+    padding: 15px;
+    background-color: white;
+}
+
+.myactive-tb td:hover {
+  background-color: solid 1px #ece3e3;
+}
+
+.my-index {
+  width: 80px;
+}
+
+.my-content {
+  width: 600px;
+}
+
+.my-date {
+  width: 120px;
+}
+
+.myactive-link {
+  text-decoration-line: none;
+  font-size: 10pt;
+  color: #333;
+}
+
+.select-tag {
+ width: 800px;
+ margin-top: 40px;
+ margin-bottom: 20px;
+}
+
+.myactive-category-btn {
+  padding: 10px;
+  font-size: 14pt;
+  border: none;
+  background-color: white;
+  transition: transform 0.2s;
+  }
+
+.myactive-category-btn:hover {
+  transform: translateY(-5px); 
+}
+
+.alert-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1280px;
+  height: auto;
+}
+
+/*----------MyReusme css--------------------------------------------------------------------------*/
+
+
+.MyReusme {
+  display: flex;
+  flex-direction: row; /* 자식 요소들을 수평으로 나란히 배치 */
+  align-items: flex-start; /* 자식 요소들을 부모의 상단에 정렬 */
+  gap: 60px;
+  margin-top: 180px;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+}
+
+
+@media (max-width: 1000px) {
+  .MyReusme {
+    flex-direction: column; /* 뷰포트가 577px 이하일 때 수직 배치 */
+    gap: 30px; /* 수직 배치 시 간격을 더 좁게 설정할 수 있음 */
+  }
+
+  /* 사이드바가 헤드 쪽으로 위치하게 하려면, 사이드바의 순서를 변경할 수 있음 */
+  .sidebar {
+    order: -1; /* 사이드바를 제일 위로 이동 */
+  }
+}
+
+/*작성 이력서가 없으면 보여질 페이지 */
+.alert-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 수직 가운데 정렬 */
+  width: 80%;
+  height: auto;
+  min-width: 800px;
+}
+
+.myresume-section {
+  width: 80%;
+  height: auto;
+  align-items: center;
+  min-width: 800px;
+}
+
+.resume-list {
+  width: 95%;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column; /* 이 부분은 column으로 유지 */
+  align-items: center;
+}
+
+.ul-resume {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
+  grid-auto-rows: auto; /* 자동 행 높이 설정 */
+  gap: 20px; /* 카드 간의 간격 설정 */
+  padding: 16px; /* 외부 여백 */
+}
+
+.li-resume {
+  background-color: #f9f9f9; /* 항목 배경색 */
+  border: 1px solid #ddd; /* 테두리 색상 */
+  padding: 16px; /* 내부 여백 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  transition: transform 0.2s; /* 애니메이션 효과 */
+}
+
+.li-resume:hover {
+  transform: translateY(-5px); /* 마우스 호버 시  움직임  */
+}
+
+.resume-link {
+  text-decoration: none;
+  color: #333;
+}
+
+/*----------ReusmeId css-----------------------------------------------------------------*/
+
+.ResumeId {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 수직 가운데 정렬 */
+    margin-top: 180px;
+    height: auto;
+    width: 100%; 
+    backdrop-filter: blur(5px);
+}
+
+
+
+.saved-resume {
+    padding-right: 15px;
+    padding-left: 15px;
+    min-width: 600px;
+    width: 820px;
+    display: flex;
+    flex-direction: column;
+    align-items: left; /* 수직 가운데 정렬 */
+}
+
+.myresume-btn-div {
+  border-bottom: solid 1px #ccc;
+  width: 820px;
+  display: flex;
+  justify-content: flex-end; /* 아이템을 오른쪽으로 정렬 */
+  gap: 20px;
+}
+
+.move-list-btn {
+  width: 90px;
+  padding: 10px;
+  border: none;
+}
+
+.saved-download-btn {
+  width: 100px;
+  padding: 8px;
+  border: solid 1px #ccc;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.saved-download-btn:hover {
+  background-color: #f3f3f3;
+}
+
+/*---------- user-info ------------------------------------------------*/
+
+.user-info-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    height: 160px;
+  }
+
+  .user-info-tb {
+    height: 120px;
+    padding: 20px;
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-collapse: collapse;
+  }
+
+  .user-info-tb th {
+    padding: 10px;
+    width: 150px;
+    background-color: aliceblue;
+    border-top: solid 1px #ccc;
+  }
+
+  .user-info-tb td {
+    padding: 10px;
+    width: 280px;
+    border-top: solid 1px #ccc;
+  }
+
+/*---------- intro ------------------------------------------------*/
+
+  .intro-div {
+    border-top: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    width: 800px;
+  }
+
+  .intro-div p {
+    padding: 20px;
+  }
+
+  /*----------edu info------------------------------------------------*/
+  
+  /* .edu-sub-title {
+    width: 100%;
+    border-bottom: solid 1px #ccc;
+  } */
+
+  .edu-info-tb {
+    width: 800px;
+    padding: 20px;
+    border-top: solid 1px #ccc;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .edu-info-tb th {
+    padding: 10px;
+    background-color: aliceblue;
+    border-bottom: solid 1px #ccc;
+  }
+
+  .edu-info-tb td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: solid 1px #ccc;
+  }
+
+  .academy-info-tb {
+    width: 800px;
+    padding: 20px;
+    border-top: solid 1px #ccc;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .academy-info-tb th {
+    padding: 10px;
+    background-color: aliceblue;
+    border-bottom: solid 1px #ccc;
+  }
+
+  .academy-info-tb td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: solid 1px #ccc;
+  }
+
+  .edu-academy {
+    width: 150px;
+  }
+
+  .th-rowspan {
+    width: 100px;
+  }
+
+  .skills-ul {
+    padding: 20px;
+   
+   border-top: solid 1px #ccc;
+   border-bottom: solid 1px #ccc;
+  }
+
+  /*-------career-info-------------------------------------------------*/
+
+  .career-info-tb {
+    width: 800px;
+    padding: 20px;
+    border-bottom: solid 0.5px #ccc;
+    border-top: solid 1px #ccc;
+    border-collapse: collapse;
+  }
+
+  .career-info-tb th {
+    width: 200px;
+    padding: 10px;
+    background-color: aliceblue;
+  }
+
+  .career-info-tb td {
+    padding: 10px;
+  }
